@@ -85,7 +85,7 @@ input {height: 20px;}
 <div id="loginTitle">Login</div>
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-	<form name="input" id ="login" method="post" action="${path}/member_servlet/loginCheck.do">
+	<form name="login" id ="login" method="post" action="${path}/member_servlet/loginCheck.do">
 		<ul>
 		<li>
 			<label for="userid">ID</label><br>
@@ -113,13 +113,13 @@ input {height: 20px;}
  %>
  	<div id ="joincheckform" style="margin-left: 680px;">
  		<p>!아직도 회원이 아니시라면 지금 바로 가입하세요.</p>
- 		<button type="button" onclick="joincheckForm()"><img src="../joinimg/joincheck.png" width="70" height="30"></button>
+ 		<button type="button" id="joincheckForm"><img src="../joinimg/joincheck.png" width="70" height="30"></button>
  	</div>
  	
  	<script type="text/javascript">
- 	$("#joincheckForm").check(function() {
- 		document.input.action="${path}/member_servlet/update.do";
-		document.form1.submit();
+ 	$("#joincheckForm").click(function() {
+ 		document.login.action="../member/join.jsp";
+		document.login.submit();
 	});
  	
  	</script>

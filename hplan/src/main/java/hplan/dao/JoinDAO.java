@@ -3,7 +3,9 @@ package hplan.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -211,6 +213,40 @@ public class JoinDAO {
 			session = MybatisManager.getInstance().openSession();
 			session.update("member.pwdUpdate", dto);
 			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(session != null) session.close();
+		}
+		
+	}
+	public String passWordCheck(String user_id, String user_pwd) {
+		String result = null;
+		SqlSession session = null;
+		try {
+			session = MybatisManager.getInstance().openSession();
+			Map<String, Object> map = new HashMap<>();
+			
+			map.put("user_id", user_id);
+			map.put("user_pwd", user_pwd);
+			
+			result = session.selectOne("member.pass_check", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(session != null) session.close();
+		}
+		
+		
+		return result;
+	}
+	public void userDelete(String user_id) {
+		SqlSession session = null;
+		try {
+			session = MybatisManager.getInstance().openSession();
+			session.delete("member.userdelete", user_id);
+			session.commit();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

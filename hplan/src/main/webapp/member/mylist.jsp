@@ -73,8 +73,10 @@ li {list-style-type: none; margin-bottom: 10px; margin-left: 250px;}
 label {color:gray;}
 input {height: 20px;}
 .error{color : red; display: none;}
-.joinimg{
-	
+
+img.absolute {
+		position: absolute;
+		left: 1200px;
 }
 </style>
 </head>
@@ -100,8 +102,6 @@ input {height: 20px;}
 				<label for="user_id">ID</label><br>
 				<input type="text" name="user_id" id="user_id" value="${dto.user_id}"  readonly="readonly" style="background-color: gray; ">&nbsp;&nbsp;&nbsp;&nbsp;
 				<p>(영문소문자/숫자8~16자)</p>
-				
-		
 			</li>
 			<li>
 				<label for="user_pwd">PASSWORD</label><br>
@@ -150,9 +150,19 @@ input {height: 20px;}
 		<button type="button" id="btnUpdate"><img  src="../joinimg/mypageupdate.png" width="100" height="30" ></button>
 		<button type="button" id="reset"><img  src="../joinimg/reset.png" width="100" height="30"> </button>
 		<button type="button" id="btnpwdUpdate"><img src="../joinimg/pwdUpdate.png" width="100" height="30"> </button>
+		<button type="button" id="btndelete" ><img src="../joinimg/memberreset.png" width="70" height="20" class="absolute" > </button>
 	</div>
 </form>
 <script type="text/javascript">
+$("#btndelete").click(function() {
+	if(confirm("회원 탈퇴를 하시겠습니까?")){
+		document.join.action="${path}/member_servlet/memberDelete.do";
+		document.join.submit();
+	}
+});
+
+
+
 $(function() {
 	$("#btnUpdate").click(function() {
 		
@@ -195,7 +205,7 @@ $(function() {
 $(function() {
 	$("#btnpwdUpdate").click(function() {
 		if(confirm("비밀번호를 변경하시겠습니까?")){
-			document.join.action = "${path}/member_servlet/pwdUpdate.do";
+			document.join.action = "${path}/member_servlet/pwdUpdateform.do";
 			document.join.submit();
 		}	
 	});
@@ -204,7 +214,7 @@ $(function() {
 $(function() {
 	$("#reset").click(function() {
 		if(confirm("정보 수정을 취소하시겠습니까?")){
-			document.join.action="hplan/index.jsp";
+			document.join.action="../hplan/index.jsp";
 			document.join.submit();
 		}
 	});

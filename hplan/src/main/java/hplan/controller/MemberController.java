@@ -175,6 +175,40 @@ public class MemberController extends HttpServlet {
 			
 			String page = "/hplan/index.jsp";
 			response.sendRedirect(contextPath+page);
+		}else if(url.indexOf("memberDeleteform.do") != -1) {
+			String user_id = request.getParameter("user_id");
+			
+			System.out.println("회원 아이디 : "+ user_id);
+			
+			MemberDTO dto = dao.view(user_id);
+			
+			request.setAttribute("dto", dto);
+			
+			String page ="/member/userDeleteForm.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
+			
+		}else if(url.indexOf("pass_check.do") != -1) {
+			String user_id = request.getParameter("user_id");
+			String user_pwd = request.getParameter("user_pwd");
+			
+			System.out.println("회원 아이디 : " + user_id);
+			System.out.println("회원 비밀번호 : " +user_pwd);
+			String result = dao.passWordCheck(user_id,user_pwd);
+			
+			String page = "";
+			
+			if(result != null) {
+				page = "/hplan/index.jsp";
+				dao.userDelete(user_id);
+				
+				response.sendRedirect(page);
+				
+			}else {
+				page = contextPath+"/member_servlet/memberDelete.do?user_id="+user_id+"&message=error";
+				response.sendRedirect(page);
+			}
+			
 			
 			
 		}

@@ -26,5 +26,12 @@ set user_pwd = #{repw}
 where user_id = #{user_id}
 
 </update>
-
+<select id="pass_check" resultMap="String">
+select user_pwd from member
+where user_id=#{user_id} and user_pwd=#{user_pwd}
+</select>
+<delete id="userdelete">
+ delete from member
+ where user_id=#{user_id}
+</delete>
 </mapper>

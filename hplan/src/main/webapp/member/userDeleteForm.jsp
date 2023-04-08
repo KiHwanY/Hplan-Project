@@ -48,8 +48,8 @@ line-height: 18px;
 h1, h2{text-shadow:none; text-align:center;}
 h1{	color: #666; text-transform:uppercase;	font-size:36px;}
 h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
-#pwdTitle{margin-left: 300px; margin-bottom: 50px; font-size: 20px; font-weight: normal; font-style: normal;}
-#pwd_font1{
+#Title{margin-left: 300px; margin-bottom: 50px; font-size: 20px; font-weight: normal; font-style: normal;}
+#unregister_font1{
 font-family: 'Inter';
 font-style: normal;
 font-weight: 400;
@@ -58,7 +58,7 @@ line-height: 36px;
 
 color: #000000; 
 }
-#pwd_font2{
+#unregister_font2{
 
 font-family: 'Inter';
 font-style: normal;
@@ -67,7 +67,7 @@ font-size: 10px;
 line-height: 24px;
 color: #8C8C8C;
 }
-#pwdUpdate {margin-left: 400px;}
+#unregisterMember {margin-left: 400px;}
 li {list-style-type: none; margin-bottom: 10px; margin-left: 250px;}
 label {color:gray;}
 input {height: 20px;}
@@ -79,73 +79,64 @@ input {height: 20px;}
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
-<div id="pwdTitle"> Change PASSWORD </div>
+<div id="Title">UNREGISTER </div>
 <div align="center">
 
-	<p id="pwd_font1">비밀번호 변경</p>
-	<p id="pwd_font2">아래 정보를 확인하여 주세요.</p>
+	<p id="unregister_font1">회원 탈퇴</p>
+	<p id="unregister_font2">원활한 탈퇴를 위해 비밀번호를 입력하여 주세요.</p>
 </div>
 <hr>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<form name="pwdUpdate" id ="pwdUpdate" method="post" >
+
+<form id="unregisterMember" name="unregisterMember"  method="post" >
+
+	<fieldset>
 		<ul>
+	
 			<li>
-			<label for="userid">Current PASSWORD</label><br>
-			<input type="text" name="user_pwd"  id ="user_pwd" value="${dto.user_pwd}" readonly="readonly" style="background-color: gray;">
+				<label for="user_id">ID</label><br>
+				<input type="text" name="user_id" id="user_id" value="${dto.user_id}"  readonly="readonly" style="background-color: gray; ">&nbsp;&nbsp;&nbsp;&nbsp;
+				<p>(영문소문자/숫자8~16자)</p>
 			</li>
 			<li>
-			<label for="passwd">Change PASSWORD</label><br>
-			<input type="password" name="repw" id="repw" value="">
-			</li>	
-			<li>
-				<label for="pw">PASSWORD CHECK</label><br>
-				<input type="password" name="repw2" id="repw2">
+				<label for="user_pwd">PASSWORD</label><br>
+				<input type="password" name="user_pwd" id="user_pwd" >
+				<p>(영문 대소문자/숫자/특수문자 중 2가지 이상 조합,8자~16자)</p>
+				  <c:if test="${param.message == 'error'}">
+   				 <span style="color: red;">비밀번호가 일치하지 않습니다.</span>
+ 				  </c:if>
+			
 			</li>
+			
 		</ul>
-	<div id="pwd_btn">
-		<input type="hidden" name="user_id" value="${dto.user_id}" >
-		<button type="button" id="pwdUpdateResult"><img src="../joinimg/pwdUpdate.png" width="100" height="30"> </button>
+	</fieldset>
+	<div style="margin-top: 15px; margin-left: 270px;" >
+		<button type="button" id="btndelete"><img  src="../joinimg/memberreset.png" width="100" height="30" ></button>
 		<button type="button" id="reset"><img  src="../joinimg/reset.png" width="100" height="30"> </button>
 	</div>
-	
 	</form>
-<script type="text/javascript">
-$(function() {
-	$("#pwdUpdateResult").click(function() {
-		
-		var form = document.pwdUpdate;
-		
-		var pwReg=/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*_-]).{9,15}$/g;
-		
-		if(!form.repw.value){
-			alert("비밀번호를 입력하세요.");
-			return false;
-		}else if(!pwReg.test($("#repw").val())) {
-			alert("비밀번호는 영문자,숫자,특수문자의 조합으로 된 10~16 범위의 문자로만 작성 가능합니다.");
-			return false;
-		}
-		if(form.repw.value != form.repw2.value){
-			alert("새로운 비밀번호를 동일하게 입력하세요.");
-			return false;
-		}
-		
-		alert("비밀번호가 수정되었습니다.");
-		document.pwdUpdate.action ="${path}/member_servlet/pwdupdateresult.do";
-		document.pwdUpdate.submit();
-		
+
+	<script type="text/javascript">
+	$(function() {
+		$("#btndelete").click(function() {
+			document.unregisterMember.action ="${path}/member_servlet/pass_check.do";
+			document.unregisterMember.submit();
+			alert("회원 탈퇴를 하셨습니다. 이용해 주셔서 감사합니다.");
+		});
 	});
 	
 	$(function() {
 		$("#reset").click(function() {
-			if(confirm("비밀번호 변경을 취소하시겠습니까?")){
-				document.pwdUpdate.action="../hplan/index.jsp";
-				document.pwdUpdate.submit();
+			if(confirm("회원 탈퇴를 취소하시겠습니까?")){
+				document.unregisterMember.action="../hplan/index.jsp";
+				document.unregisterMember.submit();
 			}
 		});
 	});
 	
-});
+	
+	
+	</script>
 
-</script>
 </body>
 </html>
