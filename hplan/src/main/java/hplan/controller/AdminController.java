@@ -50,7 +50,15 @@ public class AdminController extends HttpServlet {
 			
 			response.sendRedirect(request.getContextPath()+page);
 			
+		}else if(url.indexOf("logout.do") != -1) {
+			
+			HttpSession session = request.getSession();
+			
+			session.removeAttribute("manager_id");
+			String page = "/hplan/index.jsp";
+			response.sendRedirect(contextPath+page);
 		}
+	
 		
 		
 	
