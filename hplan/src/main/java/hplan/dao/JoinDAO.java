@@ -230,7 +230,7 @@ public class JoinDAO {
 			map.put("user_id", user_id);
 			map.put("user_pwd", user_pwd);
 			
-			result = session.selectOne("member.pass_check", map);
+			result = session.selectOne("member.passcheck", map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

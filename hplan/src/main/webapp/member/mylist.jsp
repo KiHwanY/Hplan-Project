@@ -156,7 +156,7 @@ img.absolute {
 <script type="text/javascript">
 $("#btndelete").click(function() {
 	if(confirm("회원 탈퇴를 하시겠습니까?")){
-		document.join.action="${path}/member_servlet/memberDelete.do";
+		document.join.action="${path}/member_servlet/memberDeleteform.do";
 		document.join.submit();
 	}
 });

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import hplan.dao.JoinDAO;
 import hplan.dto.MemberDTO;
 
@@ -19,10 +20,7 @@ import hplan.dto.MemberDTO;
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public MemberController() {
-		
-
-	}
+	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -148,7 +146,7 @@ public class MemberController extends HttpServlet {
 			response.sendRedirect(contextPath+page);
 
 			
-		}else if(url.indexOf("pwdUpdate.do") != -1) {
+		}else if(url.indexOf("pwdUpdateform.do") != -1) {
 			String user_id = request.getParameter("user_id");
 			
 			System.out.println("유저 아이디 : " + user_id);
@@ -160,6 +158,7 @@ public class MemberController extends HttpServlet {
 			String page = "/member/pwdUpdate.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
+			
 		}else if(url.indexOf("pwdupdateresult.do") != -1) {
 			String user_id = request.getParameter("user_id");
 			
@@ -199,13 +198,16 @@ public class MemberController extends HttpServlet {
 			String page = "";
 			
 			if(result != null) {
-				page = "/hplan/index.jsp";
+				page = "/member/deleteAction.jsp";
 				dao.userDelete(user_id);
 				
-				response.sendRedirect(page);
+				HttpSession session = request.getSession();
+				session.removeAttribute("user_id");
+				response.sendRedirect(contextPath+page);
+				System.out.println("회원 정보 삭제 : " + user_id);
 				
 			}else {
-				page = contextPath+"/member_servlet/memberDelete.do?user_id="+user_id+"&message=error";
+				page = contextPath+"/member_servlet/memberDeleteform.do?user_id="+user_id+"&message=error";
 				response.sendRedirect(page);
 			}
 			

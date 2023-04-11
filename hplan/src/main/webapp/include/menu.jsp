@@ -92,10 +92,18 @@ input {height: 20px;}
 	<a href="#">ORDER</a> |
 	<a href="#">CMOMUNITY</a> 
 	</c:if>
-	<c:if test="${sessionScope.user_id == null }">
+	<c:if test="${sessionScope.user_id == null || sessionScope.manager_id == null }">
 	<a href="${path}/member/login.jsp">LOGIN</a> |
-	<a href="${path}/member/join.jsp">JOIN</a>
+	<a href="${path}/member/join.jsp">JOIN</a> |
+	<a href="${path}/admin/adminLogin.jsp">Admin</a> 
 	</c:if>
+	<c:choose>
+	<c:when test="${sessionScope.manager_id != null }">
+	<span>${sessionScope.manager_name}님 환영합니다.</span> |
+	<a href="${path}/admin/">ADMIN PAGE</a> 
+	</c:when>
+	</c:choose>
+	
 	
 </div>
 <div style="margin: 0px; padding: 5px 0px; ">

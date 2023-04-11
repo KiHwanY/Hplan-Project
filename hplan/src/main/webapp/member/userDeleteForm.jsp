@@ -121,7 +121,7 @@ input {height: 20px;}
 		$("#btndelete").click(function() {
 			document.unregisterMember.action ="${path}/member_servlet/pass_check.do";
 			document.unregisterMember.submit();
-			alert("회원 탈퇴를 하셨습니다. 이용해 주셔서 감사합니다.");
+			
 		});
 	});
 	
