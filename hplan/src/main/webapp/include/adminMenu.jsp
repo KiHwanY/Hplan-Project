@@ -73,7 +73,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	<div style="text-align:center; margin: 0px; padding: 10px 0px 0px 0px; word-spacing: 50px;">
 	
 	<a  href="${path}/product_servlet/product_list.do">상품목록</a>
-	<a  href="${path}/product_servlet/product_insert.do">상품등록</a>
+	<a  href="${path}/product_servlet/product_insert_form.do">상품등록</a>
 	<a  href="top.html" target="blank">유저목록</a>
 	<a  href="bottom.html" target="blank">주문관리</a>
 	<a  href="#" target="blank">주문리스트</a>

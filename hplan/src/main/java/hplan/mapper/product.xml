@@ -7,7 +7,10 @@
 <select id="list" resultType="hplan.dto.ProductDTO">
 select * from product
 order by product_id desc
-
 </select>
+<insert id="product_insert">
+insert into product(product_id, p_name, p_price ,p_info ,p_stock,pf_img,cate_name)
+values (product_seq.nextval, #{p_name},#{p_price},#{p_info},#{p_stock},#{pf_img},#{cate_name})
 
+</insert>
 </mapper>

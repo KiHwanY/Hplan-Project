@@ -1,6 +1,6 @@
 package hplan.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ProductDTO {
 

@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import org.apache.ibatis.session.SqlSession;
+
 import config.DB;
+import hplan.dto.AdminDTO;
+import sqlmap.MybatisManager;
 
 public class AdminDAO {
 
@@ -55,6 +59,24 @@ public class AdminDAO {
 			}
 		}
 		return result;
+	}
+
+	public AdminDTO idcheck(String manager_id) {
+		AdminDTO dto = null;
+		SqlSession session = null;
+		
+		try {
+			session = MybatisManager.getInstance().openSession();
+			dto = session.selectOne("admin.idcheck", manager_id);
+			session.commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(session != null) session.close();
+		}
+		return dto;
+		
 	}
 
 

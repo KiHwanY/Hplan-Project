@@ -30,11 +30,6 @@ font-size: 10px;
 line-height: 29px;
 color: black;
 }
-#categoly{
-
-color: black;
-font-size: 10px;
-}
 p {
 font-family: 'Inter';
 font-style: normal;
@@ -69,7 +64,6 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 <button id="btnSearch">검색</button>
 </form>
 <form id="form1"  enctype="multipart/form-data" method="post">
-<button id="btnWrite">상품 등록</button>
 <table border="1" style="width: 100%;" >
   <tr>
     <th>상품 번호</th>
@@ -88,9 +82,9 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	  <tr>
 	    <td>${dto.product_id}</td>
 	    <td>${dto.cate_name } </td>
-	    <td>${dto.pf_img}</td>
+	    <td><img src="${path}/img/${dto.pf_img}" width="100px" height="100px"></td>
 	    <td>   
-	    <a href="${path}/product_servlet?product_id=${dto.product_id}">${dto.p_name}</a>
+	    <a href="${path}/product_servlet/product_view.do?product_id=${dto.product_id}">${dto.p_name}</a>
 	     <!-- 댓글갯수 표시 --> 
 	     <%-- <c:if test="${dto.comment_count > 0}"> --%>
 	     <%-- 	<span style="color: red;">(${dto.comment_count})</span>
@@ -99,7 +93,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	    <td>${dto.p_price}</td>
 	    <td align="center">${dto.p_stock }</td>
 	    <td align="center">${dto.p_sell}</td>
-	    <td>${dto.p_enroll}</td>
+	    <td >${dto.p_enroll}</td>
 	    </tr>
 	  	</c:when>
 	    <c:otherwise>
@@ -113,5 +107,12 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	
 </table>
 </form>
+<script type="text/javascript">
+function btnWrite() {
+	document.form1.action="${path}/product_servlet/product_insert.do";
+	document.form1.summit();
+	
+}
+</script>
 </body>
 </html>
