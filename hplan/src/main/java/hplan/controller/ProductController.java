@@ -3,7 +3,9 @@ package hplan.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -106,11 +108,16 @@ public class ProductController extends HttpServlet {
 			rd.forward(request, response);
 		}else if(url.indexOf("product_view.do") != -1) {
 			
-			String manager_id = request.getParameter("manager_id");
+			int product_id = Integer.parseInt(request.getParameter("product_id"));
 			
 			HttpSession session = request.getSession();
+			Map<String, Object> map = new HashMap<>();
 			
-			ProductDTO dto = dao.product_view(manager_id);
+			
+			int sum = dao.priceSum(product_id);
+			map.put("sum", sum);
+			
+			ProductDTO dto = dao.product_view(product_id);
 			
 			request.setAttribute("dto", dto);
 			String page = "/product/product_view.jsp";

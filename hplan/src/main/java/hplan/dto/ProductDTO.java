@@ -16,7 +16,15 @@ public class ProductDTO {
 	
 	private String show; // default 'y' 
 	
+	private int sum ;
 	
+	
+	public int getSum() {
+		return sum;
+	}
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
 	public String getCate_name() {
 		return cate_name;
 	}

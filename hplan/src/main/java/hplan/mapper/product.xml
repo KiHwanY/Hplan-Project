@@ -13,4 +13,14 @@ insert into product(product_id, p_name, p_price ,p_info ,p_stock,pf_img,cate_nam
 values (product_seq.nextval, #{p_name},#{p_price},#{p_info},#{p_stock},#{pf_img},#{cate_name})
 
 </insert>
+<select id="product_view" resultType="hplan.dto.ProductDTO">
+select * from product
+where product_id=#{product_id}
+</select>
+<select id="product_priceSum" resultType="int">
+select nvl(sum(p_price*p_stock-p_sell),0) sum
+from product
+where product_id = #{product_id}
+
+</select>
 </mapper>

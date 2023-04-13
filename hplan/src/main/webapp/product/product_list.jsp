@@ -73,7 +73,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
     <th>상품 가격</th>
     <th>재고 수량</th>
     <th>판매 수량</th>
-    <th>상품 등록일</th>
+    <th>상품 입고일</th>
     
   </tr>
   <c:forEach var="dto" items="${list}">
