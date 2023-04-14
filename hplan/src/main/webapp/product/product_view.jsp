@@ -144,14 +144,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 								</span>
 								</td>
 							</tr>
-							<tr>
-								<th><span  style="padding-left: 20px;">SELL</span></th>
-								<td style="text-align: right;">
-								<span>
-									<span style="padding-left: 75px;">${dto.p_sell}</span>
-								</span>
-								</td>
-							</tr>
+					
 							<tr>
 								<th><span  style="padding-left: 20px;">ENROLL</span></th>
 								<td style="text-align: right;">
@@ -173,27 +166,25 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 					<table style="margin-bottom: 3px"/>
 					
 
-					<!-- 구매, 장바구니 버튼 -->
+					<!-- total 금액 표출-->
 					<table>
 						<tr>
 							<td class="TOTAL">
-								TOTAL  ${map.sum}
+								TOTAL  ${sum}
 							</td>
-							<td>
-								<span id="reDirectMessage"></span>
-							</td>
+						
 						</tr>
 						<tr>
 							<td  class="addToCart" id="tableDistance" width="20px" style="padding-left: 25px;">
 								<br></br><br><br>
-								<a href="/tinynest/index.jsp?workgroup=product&work=product_btn_action&btn=0&item=164&amount=0">
+								<a href="${path}/product_servlet/product_updateForm.do?product_id=${dto.product_id}">
 									<img src="../joinimg/product_update.png" alt="상품 수정하기" width="100" height="40"/>
 								</a>
 							</td>
 							<td  class="buyNow" id="tableDistance"  >
 								<br></br><br><br>
-								<a href="/tinynest/index.jsp?workgroup=product&work=product_btn_action&btn=1&item=164&amount=0">
-									<img src="../joinimg/listbtn.png" alt="뒤로가기" width="100" height="40" />
+								<a href="#">
+									<img src="../joinimg/listbtn.png" alt="뒤로가기" width="100" height="40" onclick="history.back();"/>
 								</a>
 							</td>
 						</tr>
@@ -218,7 +209,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 			
 			
 			<!-- 상품상세정보 -->
-			<img src="/tinynest/product_image/knit hoody.png" alt="상품상세정보" />
+			<img src="${path}/productimg/${dto.product_img}" alt="상품상세정보" />
 
 
 		

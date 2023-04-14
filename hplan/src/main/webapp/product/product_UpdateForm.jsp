@@ -33,7 +33,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 <%@ include file="../include/adminMenu.jsp" %>
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3">상품 등록 </h1>
+			<h1 class="display-3">상품 수정 </h1>
 		</div>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -57,21 +57,21 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 			<div class="form-group row">
 				<label class="col-sm-2">상품명</label>
 				<div class="col-sm-5">
-					<input type="text" name="p_name" id="p_name" class="form-control">
+					<input type="text" name="p_name" id="p_name" class="form-control" value="${dto.p_name}">
 				</div>
 			</div>
 			<br>
 			<div class="form-group row">
 				<label class="col-sm-2">가격</label>
 				<div class="col-sm-5">
-					<input type="text" name="p_price" id="p_price" class="form-control">
+					<input type="text" name="p_price" id="p_price" class="form-control" value="${dto.p_price}">
 				</div>
 			</div>
 			<br>
 			<div class="form-group row">
 				<label class="col-sm-2">상세 정보</label>
 				<div class="col-sm-5">
-					<textarea name="p_info" id="p_info" cols="50" rows="2" class="form-control"></textarea>
+					<textarea name="p_info" id="p_info" cols="50" rows="2" class="form-control" ></textarea>
 				</div>
 			</div>	
 			<br>		

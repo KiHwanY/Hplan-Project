@@ -102,6 +102,7 @@ public class ProductController extends HttpServlet {
 		}else if(url.indexOf("product_list.do") != -1 ) {
 			
 			List<ProductDTO> list = dao.list();
+			
 			request.setAttribute("list", list);
 			String page ="/product/product_list.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
@@ -111,19 +112,35 @@ public class ProductController extends HttpServlet {
 			int product_id = Integer.parseInt(request.getParameter("product_id"));
 			
 			HttpSession session = request.getSession();
-			Map<String, Object> map = new HashMap<>();
-	
 			int sum = dao.priceSum(product_id);
 			
 			ProductDTO dto = dao.product_view(product_id);
-			map.put("sum", sum);
+			
+			
+			request.setAttribute("sum", sum);
 			
 			request.setAttribute("dto", dto);
-			request.setAttribute("map", map);
+			
 			String page = "/product/product_view.jsp";
 			
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
+		}else if(url.indexOf("product_updateForm.do") != -1) {
+			
+			int product_id = Integer.parseInt(request.getParameter("product_id"));
+			
+			ProductDTO dto = dao.product_view(product_id);
+			
+			request.setAttribute("dto", dto);
+			
+			String page = "/product/product_UpdateForm.jsp";
+			
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
+			
+			
+			
+			
 		}
 		
 		

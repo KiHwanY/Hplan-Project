@@ -72,7 +72,6 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
     <th>상품명</th>
     <th>상품 가격</th>
     <th>재고 수량</th>
-    <th>판매 수량</th>
     <th>상품 입고일</th>
     
   </tr>
@@ -92,7 +91,6 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	    </td>
 	    <td>${dto.p_price}</td>
 	    <td align="center">${dto.p_stock }</td>
-	    <td align="center">${dto.p_sell}</td>
 	    <td >${dto.p_enroll}</td>
 	    </tr>
 	  	</c:when>

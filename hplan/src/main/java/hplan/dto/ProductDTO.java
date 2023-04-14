@@ -13,12 +13,19 @@ public class ProductDTO {
 	private String pf_img; // 상품 이미지
 	private Date p_enroll; // 상품 등록일
 	private String cate_name; // 카테고리
+	private String product_img; // 상품 상세 이미지
 	
 	private String show; // default 'y' 
 	
 	private int sum ;
 	
 	
+	public String getProduct_img() {
+		return product_img;
+	}
+	public void setProduct_img(String product_img) {
+		this.product_img = product_img;
+	}
 	public int getSum() {
 		return sum;
 	}
