@@ -177,7 +177,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 					<table>
 						<tr>
 							<td class="TOTAL">
-								TOTAL  ${dto.sum}
+								TOTAL  ${map.sum}
 							</td>
 							<td>
 								<span id="reDirectMessage"></span>

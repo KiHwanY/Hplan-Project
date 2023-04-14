@@ -112,14 +112,14 @@ public class ProductController extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			Map<String, Object> map = new HashMap<>();
-			
-			
+	
 			int sum = dao.priceSum(product_id);
-			map.put("sum", sum);
 			
 			ProductDTO dto = dao.product_view(product_id);
+			map.put("sum", sum);
 			
 			request.setAttribute("dto", dto);
+			request.setAttribute("map", map);
 			String page = "/product/product_view.jsp";
 			
 			RequestDispatcher rd = request.getRequestDispatcher(page);

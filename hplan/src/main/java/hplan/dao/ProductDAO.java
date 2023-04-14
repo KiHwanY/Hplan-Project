@@ -71,7 +71,7 @@ public class ProductDAO {
 			e.printStackTrace();
 		}
 		
-		return 0;
+		return sum;
 	}
 
 }
