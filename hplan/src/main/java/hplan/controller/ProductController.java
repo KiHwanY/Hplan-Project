@@ -138,11 +138,66 @@ public class ProductController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 			
+		}else if(url.indexOf("product_update.do") != -1 ) {
+			
+			File productUpload = new File(Constants.UPLOAD_PATH);
+			
+			if(! productUpload.exists()) {
+				productUpload.mkdir(); // 디렉토리 생성
+			}
+			
+			MultipartRequest multi = new MultipartRequest(request, Constants.UPLOAD_PATH,
+					Constants.MAX_UPLOAD,"utf-8", new DefaultFileRenamePolicy());
+			
+			int product_id = Integer.parseInt(multi.getParameter("product_id"));
+			String cate_name = multi.getParameter("cate_name");
+			String p_name = multi.getParameter("p_name");
+			int p_price = Integer.parseInt( multi.getParameter("p_price"));
+			String p_info = multi.getParameter("p_info");
+			int p_stock = Integer.parseInt(multi.getParameter("p_stock"));
+			
+			String pf_img = " ";
+			int filesize = 0;
+			
+			try {
+				Enumeration files = multi.getFileNames();
+				while(files.hasMoreElements()) {
+					
+					String file1=(String)files.nextElement();
+					pf_img =multi.getFilesystemName(file1);
+					File f1 = multi.getFile(file1);
+					if(f1 != null) {
+						filesize=(int)f1.length(); // 파일 사이즈 저장
+					}
+				}
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			ProductDTO dto = new ProductDTO();
+			
+			dto.setProduct_id(product_id);
+			dto.setCate_name(cate_name);
+			dto.setP_name(p_name);
+			dto.setP_price(p_price);
+			dto.setP_info(p_info);
+			dto.setP_stock(p_stock);
+			
+			//파일 첨부를 하지 않을 경우 기존 정보를 가져옴
+			if(pf_img == null || pf_img.trim().equals("")) {
+				
+				ProductDTO dto2 = dao.product_view(product_id);
+				String pf_img2 = dto2.getPf_img();
+				dto.setPf_img(pf_img2);
+				
+			}else {
+				dto.setPf_img(pf_img);
+			}
 			
 			
 			
 		}
-		
 		
 	}
 

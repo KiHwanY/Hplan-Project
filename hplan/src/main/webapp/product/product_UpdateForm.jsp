@@ -38,7 +38,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<div class="container">
-		<form name="newProduct" id="newProduct"  enctype="multipart/form-data"
+		<form name="product_Update" id="product_Update"  enctype="multipart/form-data"
 		class="form-horizontal" method="post">
 			<div class="form-group row">
 				<label class="col-sm-2">CATEGOLY</label>
@@ -71,14 +71,14 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 			<div class="form-group row">
 				<label class="col-sm-2">상세 정보</label>
 				<div class="col-sm-5">
-					<textarea name="p_info" id="p_info" cols="50" rows="2" class="form-control" ></textarea>
+					<textarea name="p_info" id="p_info" cols="50" rows="2" class="form-control" >${dto.p_info} </textarea>
 				</div>
 			</div>	
 			<br>		
 			<div class="form-group row">
 				<label class="col-sm-2">재고 수</label>
 				<div class="col-sm-5">
-					<input type="text" name="p_stock" id="p_stock" class="form-control">
+					<input type="text" name="p_stock" id="p_stock" class="form-control" value="${dto.p_stock}">
 				</div>
 			</div>
 			<br>
@@ -91,7 +91,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 			<br>
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10" align="center">
-					<input type="button" class="btn btn-primary" value="상품 등록" id="btninsert">
+					<input type="button" class="btn btn-primary" value="상품 수정" id="btnUpdate">
 					<input type="button" class="btn btn-light" value="취소" id="btnreset">
 				</div>
 			</div>
@@ -101,9 +101,9 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	</div>
 <script type="text/javascript">
 $(function() {
-	$("#btninsert").click(function() {
+	$("#btnUpdate").click(function() {
 		
-		var form1 = document.newProduct;
+		var form1 = document.product_Update;
 		
 		
 		if(form1.cate_name.value == "cate"){
@@ -127,14 +127,14 @@ $(function() {
 			return false;
 		}
 		
-		document.newProduct.action = "${path}/product_servlet/product_insert.do";
-		document.newProduct.submit();
+		document.product_Update.action = "${path}/product_servlet/product_update.do";
+		document.product_Update.submit();
 	});
 	
 	$("#btnreset").click(function() {
 		if(confirm("상품 등록을 취소하시겠습니까?")){
-			document.newProduct.action="../admin/adminForm.jsp";
-			document.newProduct.submit();
+			document.product_Update.action="../admin/adminForm.jsp";
+			document.product_Update.submit();
 				
 		}
 	});
