@@ -44,48 +44,46 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 </head>
 <body>
 <%@ include file="../include/adminMenu.jsp" %>
-	
-<form name="form1" method="post" action="${path}/product_servlet/search.do">
+<form name="form1" method="post" action="${path}/member_servlet/membersearch.do">
 <select name="search_option">
- <option value="cate_name">카테고리</option>
- <option value="p_name">상품명</option>
- <option value="all">카테고리+상품명</option>
+ <option value="user_id">ID</option>
+ <option value="user_name">회원명</option>
+ <option value="all">ID+회원명</option>
 </select>
 <input name="keyword">
 <button id="btnSearch">검색</button>
 </form>
-<form id="form1"  enctype="multipart/form-data" method="post">
+<form id="form1" method="post">
 <table border="1" style="width: 100%;" >
   <tr>
-    <th>상품 번호</th>
-    <th>카테고리</th>
-    <th>상품 이미지</th>
-    <th>상품명</th>
-    <th>상품 가격</th>
-    <th>재고 수량</th>
-    <th>상품 입고일</th>
-    
+    <th>회원 번호</th>
+    <th>ID</th>
+    <th>회원명</th>
+    <th>E-MAIL</th>
+    <th>PHONE</th>
+    <th>가입일자</th>
+   
   </tr>
   <c:forEach var="dto" items="${list}">
   <c:choose>
    <c:when test="${dto.show == 'y'}">
 	  <tr>
-	    <td>${dto.product_id}</td>
-	    <td>${dto.cate_name } </td>
-	    <td><img src="/upload/${dto.pf_img}" width="100px" height="100px"></td>
-	    <td>   
-	    <a href="${path}/product_servlet/product_view.do?product_id=${dto.product_id}">${dto.p_name}</a>
-	  
+	    <td>${dto.member_id}</td>
+	    <td>${dto.user_id } </td>
+	     
+	   <td> <a href="${path}/member_servlet/member_view.do?member_id=${dto.member_id}">${dto.user_name}</a>
 	    </td>
-	    <td>${dto.p_price}</td>
-	    <td align="center">${dto.p_stock }</td>
-	    <td >${dto.p_enroll}</td>
+	    <td>${dto.user_email}</td>
+	    <td>${dto.phone }</td>
+	    <td>
+	    <fmt:formatDate value="${dto.reg_date }" pattern="yyyy-MM-dd"/> 
+	  	</td>
 	    </tr>
 	  	</c:when>
 	    <c:otherwise>
 	     <tr>
-	      <td>${dto.product_id}</td>
-	      <td colspan="8" align="center">삭제된 상품입니다.</td>
+	      <td>${dto.member_id}</td>
+	      <td colspan="8" align="center">탈퇴한 회원입니다.</td>
 	     </tr>
 	    </c:otherwise>
 	    </c:choose>
@@ -93,12 +91,5 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	
 </table>
 </form>
-<script type="text/javascript">
-function btnWrite() {
-	document.form1.action="${path}/product_servlet/product_insert.do";
-	document.form1.summit();
-	
-}
-</script>
 </body>
 </html>

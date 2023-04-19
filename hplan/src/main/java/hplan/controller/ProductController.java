@@ -52,15 +52,26 @@ public class ProductController extends HttpServlet {
 			String pf_img = " ";
 			int filesize = 0;
 			
+			String product_img = " ";
+			int filesize2 = 0;
+			
 			try {
 				Enumeration files = multi.getFileNames();
 				while(files.hasMoreElements()) {
 					
 					String file1=(String)files.nextElement();
-					pf_img =multi.getFilesystemName(file1);
 					File f1 = multi.getFile(file1);
+					
+					String file2 = (String)files.nextElement();
+					File f2 = multi.getFile(file2);
+					product_img = multi.getFilesystemName(file1);
+					pf_img =multi.getFilesystemName(file2);
 					if(f1 != null) {
 						filesize=(int)f1.length(); // 파일 사이즈 저장
+					}
+					
+					if(f2 != null) {
+						filesize2=(int)f2.length();
 					}
 				}
 				
@@ -79,7 +90,11 @@ public class ProductController extends HttpServlet {
 			if(pf_img == null || pf_img.trim().equals("")) {
 				pf_img="-";
 			}
+			if(product_img == null || product_img.trim().equals("")) {
+				product_img="-";
+			}
 			dto.setPf_img(pf_img);
+			dto.setProduct_img(product_img);
 			
 			dao.product_insert(dto);
 			String page="/product_servlet/product_list.do";
@@ -87,14 +102,6 @@ public class ProductController extends HttpServlet {
 
 		}else if(url.indexOf("product_insert_form.do") != -1) {
 			
-			String manager_id = request.getParameter("manager_id");
-			
-			AdminDTO dto =admindao.idcheck(manager_id);
-			
-			
-			System.out.println("관리자 번호 : " + manager_id );
-			
-			request.setAttribute("dto", dto);
 			String page= "/product/product_insert.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
@@ -111,7 +118,7 @@ public class ProductController extends HttpServlet {
 			
 			int product_id = Integer.parseInt(request.getParameter("product_id"));
 			
-			HttpSession session = request.getSession();
+			
 			int sum = dao.priceSum(product_id);
 			
 			ProductDTO dto = dao.product_view(product_id);
@@ -194,9 +201,49 @@ public class ProductController extends HttpServlet {
 			}else {
 				dto.setPf_img(pf_img);
 			}
+			// 첨부파일 삭제 처리
+			String fileDel = multi.getParameter("fileDel");
 			
+			if(fileDel != null && fileDel.equals("on")) {
+				String pf_img1 = dao.getFileName(product_id);
+				File f = new File(Constants.UPLOAD_PATH+pf_img);
+				f.delete();
+				
+				dto.setPf_img("-");
+				System.out.println("첨부파일 삭제!");
+			}
 			
+			dao.productUpdate(dto);
 			
+			String page ="/product_servlet/product_list.do";
+			response.sendRedirect(contextPath+page);
+			System.out.println("상품 수정 완료");
+		}else if(url.indexOf("product_delete.do") != -1) {
+			
+			MultipartRequest multi = new MultipartRequest(request, Constants.UPLOAD_PATH
+					,Constants.MAX_UPLOAD,"utf-8", new DefaultFileRenamePolicy());
+			
+			int product_id = Integer.parseInt(multi.getParameter("product_id"));
+			
+			 dao.productDelete(product_id);
+			 
+			 String page ="/product_servlet/product_list.do";
+			 response.sendRedirect(contextPath+page);
+			 
+		}else if(url.indexOf("search.do") != -1) {
+			
+			String search_option = request.getParameter("search_option");
+			String keyword = request.getParameter("keyword");
+			
+			List<ProductDTO> list = dao.searchLIst(search_option,keyword);
+			
+			request.setAttribute("list", list);
+			request.setAttribute("search_option", search_option);
+			request.setAttribute("keyword", keyword);
+			
+			String page ="/product/search.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
 		}
 		
 	}

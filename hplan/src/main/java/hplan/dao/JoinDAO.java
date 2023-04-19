@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import config.DB;
 import hplan.dto.MemberDTO;
+import hplan.dto.ProductDTO;
 import sqlmap.MybatisManager;
 
 
@@ -253,6 +254,45 @@ public class JoinDAO {
 			if(session != null) session.close();
 		}
 		
+	}
+	public List<MemberDTO> memberList() {
+		
+		List<MemberDTO> list = null;
+		SqlSession session = null;
+		try {
+		 session =MybatisManager.getInstance().openSession();
+		 list = session.selectList("member.memberList");
+		} catch (Exception e) {
+			if(session != null) session.close();
+		}
+		
+		return list;
+	}
+	public MemberDTO adminView(int member_id) {
+		
+		MemberDTO dto = null;
+		SqlSession session = null;
+		try {
+			session = MybatisManager.getInstance().openSession();
+			dto = session.selectOne("member.userView", member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(session != null) session.close();
+		}
+		return dto;
+	}
+	public List<ProductDTO> searchLIst(String search_option, String keyword) {
+		List<ProductDTO> list = null;
+		try(SqlSession session=MybatisManager.getInstance().openSession()){
+			Map<String, String> map = new HashMap<>();
+			map.put("search_option", search_option);
+			map.put("keyword", "%"+keyword+"%");
+			list = session.selectList("member.searchList" , map);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }
 

@@ -15,6 +15,17 @@ public class MemberDTO {
 	private String phone;
 	private Date reg_date;
 	private Date last_update;
+	private String show;
+	
+	
+	
+	
+	public String getShow() {
+		return show;
+	}
+	public void setShow(String show) {
+		this.show = show;
+	}
 	public long getMember_id() {
 		return member_id;
 	}

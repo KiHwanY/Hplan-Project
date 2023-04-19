@@ -67,7 +67,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 
 				<!-- 이미지 영역 -->
 				<div id="p_img">
-					<img src="${path}/img/${dto.pf_img}" 
+					<img src="/upload/${dto.pf_img}"
 					alt="대표이미지" width="470px;" height="470px;" />
 				</div>
 				<!-- 카테고리 -->
@@ -209,7 +209,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 			
 			
 			<!-- 상품상세정보 -->
-			<img src="${path}/productimg/${dto.product_img}" alt="상품상세정보" />
+			<img src="/upload/${dto.product_img}" width="470px;"  alt="상품상세정보" />
 
 
 		

@@ -34,4 +34,27 @@ where user_id=#{user_id} and user_pwd=#{user_pwd}
  delete from member
  where user_id=#{user_id}
 </delete>
+<select id="memberList" resultType="hplan.dto.MemberDTO">
+select * from member
+order by member_id
+</select>
+<select id="userView" resultType="hplan.dto.MemberDTO">
+select * from member
+where member_id = #{member_id}
+</select>
+<select id="searchList" resultType="hplan.dto.MemberDTO">
+select member_id,user_id,user_name,user_email,phone,reg_date,show
+	from member
+	<choose>
+		<when test="search_option != 'all' ">
+		where ${search_option} like #{keyword} and show='y'
+		</when>
+		<otherwise>
+		where ( user_id like #{keyword}  
+		or user_name like #{keyword})
+		and show='y'
+		</otherwise>
+	</choose>
+	order by member_id desc
+</select>
 </mapper>

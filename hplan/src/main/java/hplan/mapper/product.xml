@@ -9,8 +9,8 @@ select * from product
 order by product_id desc
 </select>
 <insert id="product_insert">
-insert into product(product_id, p_name, p_price ,p_info ,p_stock,pf_img,cate_name)
-values (product_seq.nextval, #{p_name},#{p_price},#{p_info},#{p_stock},#{pf_img},#{cate_name})
+insert into product(product_id, p_name, p_price ,p_info ,p_stock,pf_img,cate_name,product_img)
+values (product_seq.nextval, #{p_name},#{p_price},#{p_info},#{p_stock},#{pf_img},#{cate_name},#{product_img})
 
 </insert>
 <select id="product_view" resultType="hplan.dto.ProductDTO">
@@ -22,6 +22,34 @@ select nvl(sum(p_price*p_stock),0) sum
 from product
 where product_id = #{product_id}
 </select>
-
-
+<select id="getFileName" resultType="String">
+select pf_img
+from product
+where product_id=#{product_id}
+</select>
+<update id="productUpdate">
+update product
+set p_name =#{p_name},p_price =#{p_price},p_info=#{p_info},
+p_stock=#{p_stock},cate_name=#{cate_name},pf_img=#{pf_img},product_img=#{product_img}
+where product_id=#{product_id}
+</update>
+<update id="delete">
+update product set show='n' 
+where product_id=#{product_id}
+</update>
+<select id="searchList" resultType="hplan.dto.ProductDTO">
+select product_id,cate_name,pf_img,p_name,p_price,p_info,p_stock,p_enroll, show
+	from product
+	<choose>
+		<when test="search_option != 'all' ">
+		where ${search_option} like #{keyword} and show='y'
+		</when>
+		<otherwise>
+		where ( cate_name like #{keyword}  
+		or p_name like #{keyword})
+		and show='y'
+		</otherwise>
+	</choose>
+	order by product_id desc
+</select>
 </mapper>

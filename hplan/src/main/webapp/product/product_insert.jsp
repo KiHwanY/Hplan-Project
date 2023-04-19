@@ -83,9 +83,15 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 			</div>
 			<br>
 			<div class="form-group row">
-				<label class="col-sm-2">상품 이미지</label>
+				<label class="col-sm-2">상품 메인 이미지</label>
 				<div class="col-sm-3">
 					<input type="file" name="file1" id="file1" class="form-control">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2">상품 상세 이미지</label>
+				<div class="col-sm-3">
+					<input type="file" name="file2" id="file2" class="form-control">
 				</div>
 			</div>
 			<br>
@@ -93,6 +99,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 				<div class="col-sm-offset-2 col-sm-10" align="center">
 					<input type="button" class="btn btn-primary" value="상품 등록" id="btninsert">
 					<input type="button" class="btn btn-light" value="취소" id="btnreset">
+					
 				</div>
 			</div>
 			

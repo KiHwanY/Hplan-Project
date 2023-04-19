@@ -2,7 +2,7 @@ package hplan.controller;
 
 import java.io.IOException;
 import java.net.URLEncoder;
-
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import hplan.dao.AdminDAO;
 import hplan.dao.JoinDAO;
+
 import hplan.dto.MemberDTO;
+import hplan.dto.ProductDTO;
 
 @WebServlet("/member_servlet/*")
 public class MemberController extends HttpServlet {
@@ -28,7 +30,7 @@ public class MemberController extends HttpServlet {
 		String contextPath = request.getContextPath();
 
 		JoinDAO dao = new JoinDAO();
-
+		AdminDAO admindao = new AdminDAO();
 		if (url.indexOf("join.do") != -1) {
 
 			try {
@@ -210,8 +212,40 @@ public class MemberController extends HttpServlet {
 				page = contextPath+"/member_servlet/memberDeleteform.do?user_id="+user_id+"&message=error";
 				response.sendRedirect(page);
 			}
+
+		}else if(url.indexOf("member_list.do") != -1) {
+
 			
+			List<MemberDTO> list = dao.memberList();
 			
+			request.setAttribute("list", list);
+			
+			String page ="/admin/member_list.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
+		}else if(url.indexOf("member_view.do") != -1) {
+			int member_id  = Integer.parseInt(request.getParameter("member_id"));
+			
+			MemberDTO dto = dao.adminView(member_id);
+			
+			request.setAttribute("dto", dto);
+			
+			String page ="/admin/memberView.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
+		}else if(url.indexOf("membersearch.do") != -1) {
+			String search_option = request.getParameter("search_option");
+			String keyword = request.getParameter("keyword");
+			
+			List<ProductDTO> list = dao.searchLIst(search_option,keyword);
+			
+			request.setAttribute("list", list);
+			request.setAttribute("search_option", search_option);
+			request.setAttribute("keyword", keyword);
+			
+			String page ="/admin/memberSearch.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
 			
 		}
 	

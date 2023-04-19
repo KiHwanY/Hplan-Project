@@ -85,14 +85,20 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 			<div class="form-group row">
 				<label class="col-sm-2">상품 이미지</label>
 				<div class="col-sm-3">
-					<input type="file" name="file1" id="file1" class="form-control">
+					 <c:if test="${dto.pf_img != null}">
+					    ${dto.pf_img}
+					    <input type="checkbox" name="fileDel">첨부파일 삭제 <br>
+					   </c:if>
+					  <input type="file" name="file1"  class="form-control">
 				</div>
 			</div>
 			<br>
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10" align="center">
+					<input type="hidden" id="product_id" value="${dto.product_id}">
 					<input type="button" class="btn btn-primary" value="상품 수정" id="btnUpdate">
 					<input type="button" class="btn btn-light" value="취소" id="btnreset">
+					<input type="button" class="btn btn-dark" value="상품 삭제" id="btndelete">
 				</div>
 			</div>
 			
@@ -127,7 +133,7 @@ $(function() {
 			return false;
 		}
 		
-		document.product_Update.action = "${path}/product_servlet/product_update.do";
+		document.product_Update.action = "${path}/product_servlet/product_update.do?product_id=${dto.product_id}";
 		document.product_Update.submit();
 	});
 	
@@ -138,6 +144,14 @@ $(function() {
 				
 		}
 	});
+	
+	$("#btndelete").click(function() {
+		if(confirm("상품을 삭제하시겠습니까?")){
+			document.product_Update.action="${path}/product_servlet/product_delete.do?product_id=${dto.product_id}";
+			document.product_Update.submit();
+		}
+			
+	})
 })
 
 

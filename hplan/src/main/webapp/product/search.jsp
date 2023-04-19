@@ -44,16 +44,31 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 </head>
 <body>
 <%@ include file="../include/adminMenu.jsp" %>
-	
 <form name="form1" method="post" action="${path}/product_servlet/search.do">
+
 <select name="search_option">
- <option value="cate_name">카테고리</option>
- <option value="p_name">상품명</option>
- <option value="all">카테고리+상품명</option>
+<c:choose>
+ <c:when test="${search_option == 'cate_name' }">
+	<option value="cate_name" selected>카테고리</option>
+ 	<option value="p_name">상품명</option>
+ 	<option value="all">카테고리+상품명</option>
+ </c:when>
+ <c:when test="${search_option == 'p_name' }">
+	<option value="cate_name" >카테고리</option>
+ 	<option value="p_name"selected>상품명</option>
+ 	<option value="all">카테고리+상품명</option>
+ </c:when>
+ <c:when test="${search_option == 'all' }">
+	<option value="cate_name" >카테고리</option>
+ 	<option value="p_name">상품명</option>
+ 	<option value="all" selected>카테고리+상품명</option>
+ </c:when>
+</c:choose> 
 </select>
-<input name="keyword">
+<input name="keyword" value="${keyword}">
 <button id="btnSearch">검색</button>
 </form>
+<input type="button" value="목록" id="btnList">
 <form id="form1"  enctype="multipart/form-data" method="post">
 <table border="1" style="width: 100%;" >
   <tr>
@@ -72,7 +87,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	  <tr>
 	    <td>${dto.product_id}</td>
 	    <td>${dto.cate_name } </td>
-	    <td><img src="/upload/${dto.pf_img}" width="100px" height="100px"></td>
+	    <td><img src="${path}/img/${dto.pf_img}" width="100px" height="100px"></td>
 	    <td>   
 	    <a href="${path}/product_servlet/product_view.do?product_id=${dto.product_id}">${dto.p_name}</a>
 	  
@@ -99,6 +114,12 @@ function btnWrite() {
 	document.form1.summit();
 	
 }
+$(function() {
+	$("#btnList").click(function() {
+		location.href="${path}/product_servlet/product_list.do";
+	});
+});
+
 </script>
 </body>
 </html>
