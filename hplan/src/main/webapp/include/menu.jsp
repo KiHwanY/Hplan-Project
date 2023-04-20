@@ -4,18 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>join</title>
 <%@ include file="../include/header.jsp" %>
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Neucha' rel='stylesheet' type='text/css'>
- <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
- <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
  <style type="text/css">
- *{margin:0; padding:0; list-style:none;}
-a{text-decoration:none;	color:#666;}
-a:hover{color:#1bc1a3;}
-body, hmtl{background: #ecf0f1; font-family: 'Anton', sans-serif;}
-	
-a {text-decoration-line: none; }
 
 #home{
 position: absolute;
@@ -69,8 +59,17 @@ li {list-style-type: none; margin-bottom: 10px;}
 label {color:gray;}
 input {height: 20px;}
 .error{color : red; display: none;}
-.joinimg{
-	
+body {
+ /*  font-family: Verdana, Arial; */
+  font-family: 'Open Sans', sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #666;
+  
+}
+a:hover {
+  /* background-color: yellow; */
 }
 </style>
 </head>

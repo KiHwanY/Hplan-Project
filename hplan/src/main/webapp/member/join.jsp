@@ -72,9 +72,6 @@ li {list-style-type: none; margin-bottom: 10px; margin-left: 250px;}
 label {color:gray;}
 input {height: 20px;}
 .error{color : red; display: none;}
-.joinimg{
-	
-}
 </style>
 </head>
 <body>
@@ -244,19 +241,6 @@ $("#postSearch").click(function() {
 	}).open();
 });
 </script>
-<div id ="footer">
-	
-	<br><br><br><br><br>
-	<div class="footer" style="margin-left: 250px;">
-		<ul>
-		<span>COMPANY: H PLAN</span>
-		<span>OWNER: H PLAN</span>
-		<span>BUSINESS LICENSE: 111-11-1111</span>
-		<span>ONLINE BUSINESS: 2023-서울역삼-2099</span><br>
-		<span>ADDRESS: 서울특별시 강남구 테헤란로14길 6 남도빌딩 2층, 3층, 4층</span><br>
-		<span>E - MAIL: HPLAN@naver.com</span>
-		</ul>
-	</div>
-	</div>
+
 </body>
 </html>

@@ -183,13 +183,13 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 							</td>
 							<td  class="buyNow" id="tableDistance"  >
 								<br></br><br><br>
-								<a href="#">
-									<img src="../joinimg/listbtn.png" alt="뒤로가기" width="100" height="40" onclick="history.back();"/>
+								<a href="${path}/product_servlet/product_list.do">
+									<img src="../joinimg/listbtn.png" alt="뒤로가기" width="100" height="40" />
 								</a>
 							</td>
 						</tr>
 					</table>
-					<!-- //구매, 장바구니 버튼 -->
+				
 						
 				</div>
 				<!-- //detailText -->
@@ -199,17 +199,17 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 
 		</div>
 		<!-- //상단 제품 정보(detail) -->
-			
+			<br><hr>
 
 
 
 	
 		<!-- 하단부 -->
-		<div style="padding-top: 300px; margin-top: 300px; ">
+		<div style="padding-top: 50px; margin-top: 50px;" align="center">
 			
 			
 			<!-- 상품상세정보 -->
-			<img src="/upload/${dto.product_img}" width="470px;"  alt="상품상세정보" />
+			<img src="/upload/${dto.product_img}" width="1000px;"  alt="상품상세정보" />
 
 
 		
@@ -222,6 +222,8 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 	<!-- contents -->
 	
 </div>
-
+<div style="position: fixed; bottom: 40px; right: 5px">
+<a href="#p_img">TOP</a>
+</div>
 </body>
 </html>

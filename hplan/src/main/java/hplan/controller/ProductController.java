@@ -165,16 +165,27 @@ public class ProductController extends HttpServlet {
 			
 			String pf_img = " ";
 			int filesize = 0;
+			String product_img=" ";
+			int filesize2 = 0;
 			
 			try {
 				Enumeration files = multi.getFileNames();
 				while(files.hasMoreElements()) {
 					
 					String file1=(String)files.nextElement();
-					pf_img =multi.getFilesystemName(file1);
 					File f1 = multi.getFile(file1);
+					
+					String file2 = (String)files.nextElement();
+					File f2 = multi.getFile(file2);
+					product_img = multi.getFilesystemName(file1);
+					pf_img =multi.getFilesystemName(file2);
 					if(f1 != null) {
 						filesize=(int)f1.length(); // 파일 사이즈 저장
+
+						if(f2 != null) {
+							filesize2=(int)f2.length();
+				
+						}
 					}
 				}
 				
@@ -201,8 +212,19 @@ public class ProductController extends HttpServlet {
 			}else {
 				dto.setPf_img(pf_img);
 			}
+			if(product_img == null || product_img.trim().equals("")) {
+				ProductDTO dto3 = dao.product_view(product_id);
+				String product_img2 = dto3.getProduct_img();
+				dto.setProduct_img(product_img2);
+				
+			}else {
+				dto.setProduct_img(product_img);
+			}
+			
 			// 첨부파일 삭제 처리
 			String fileDel = multi.getParameter("fileDel");
+			String fileDel2 = multi.getParameter("fileDe2");
+			
 			
 			if(fileDel != null && fileDel.equals("on")) {
 				String pf_img1 = dao.getFileName(product_id);
@@ -211,6 +233,16 @@ public class ProductController extends HttpServlet {
 				
 				dto.setPf_img("-");
 				System.out.println("첨부파일 삭제!");
+			}
+			
+			if(fileDel2 != null && fileDel2.equals("on")) {
+				String product_img1 = dao.getFileName(product_id);
+				File f = new File(Constants.UPLOAD_PATH+product_img);
+				f.delete();
+				
+				dto.setProduct_img("-");
+				System.out.println("상품 상세 이미지 삭제!");
+				
 			}
 			
 			dao.productUpdate(dto);

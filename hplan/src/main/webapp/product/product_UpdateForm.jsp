@@ -83,7 +83,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 			</div>
 			<br>
 			<div class="form-group row">
-				<label class="col-sm-2">상품 이미지</label>
+				<label class="col-sm-2">상품 메인 이미지</label>
 				<div class="col-sm-3">
 					 <c:if test="${dto.pf_img != null}">
 					    ${dto.pf_img}
@@ -92,6 +92,17 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 					  <input type="file" name="file1"  class="form-control">
 				</div>
 			</div>
+			<div class="form-group row">
+				<label class="col-sm-2">상품 상세 이미지</label>
+				<div class="col-sm-3">
+					 <c:if test="${dto.product_img != null}">
+					    ${dto.product_img}
+					    <input type="checkbox" name="fileDe2">첨부파일 삭제 <br>
+					   </c:if>
+					<input type="file" name="file2" id="file2" class="form-control">
+				</div>
+			</div>
+			
 			<br>
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10" align="center">
