@@ -9,20 +9,14 @@
 <link href='https://fonts.googleapis.com/css?family=Neucha' rel='stylesheet' type='text/css'>
  <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
- <style type="text/css">
- *{margin:0; padding:0; list-style:none;}
-a{text-decoration:none;	color:#666;}
-a:hover{color:#1bc1a3;}
-body, hmtl{background: #ecf0f1; font-family: 'Anton', sans-serif;}
-	
-a {text-decoration-line: none; }
+<style type="text/css">
 
 #home{
 position: absolute;
 width: 40px;
 height: 34px;
 left: 0px;
-top: 45px;
+top: 15px;
 
 font-style: normal;
 font-weight: 400;
@@ -45,6 +39,42 @@ line-height: 18px;
 h1, h2{text-shadow:none; text-align:center;}
 h1{	color: #666; text-transform:uppercase;	font-size:36px;}
 h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
+#joinTitle{margin-left: 300px; margin-bottom: 50px; font-size: 20px; font-weight: normal;}
+#join_font1{
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 36px;
+
+color: #000000; 
+}
+#join_font2{
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 24px;
+color: #8C8C8C;
+}
+#join {margin-left: 350px;}
+li {list-style-type: none; margin-bottom: 10px;}
+label {color:gray;}
+input {height: 20px;}
+.error{color : red; display: none;}
+body {
+ /*  font-family: Verdana, Arial; */
+  font-family: 'Open Sans', sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #666;
+  
+}
+a:hover {
+  /* background-color: yellow; */
+}
 
 </style>
 </head>

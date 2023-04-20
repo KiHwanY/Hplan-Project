@@ -84,13 +84,14 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 			<br>
 			<div class="form-group row">
 				<label class="col-sm-2">상품 메인 이미지</label>
-				<div class="col-sm-3">
+				<div class="col-md-4" style="height: 40px;">
 					<input type="file" name="file1" id="file1" class="form-control">
 				</div>
 			</div>
+			<br>
 			<div class="form-group row">
 				<label class="col-sm-2">상품 상세 이미지</label>
-				<div class="col-sm-3">
+				<div class="col-md-4">
 					<input type="file" name="file2" id="file2" class="form-control">
 				</div>
 			</div>
