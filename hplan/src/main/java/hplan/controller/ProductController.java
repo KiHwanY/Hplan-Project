@@ -276,6 +276,12 @@ public class ProductController extends HttpServlet {
 			String page ="/product/search.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
+			
+			
+		}else if(url.indexOf("mainList.do") != -1) {
+			
+			
+			
 		}
 		
 	}

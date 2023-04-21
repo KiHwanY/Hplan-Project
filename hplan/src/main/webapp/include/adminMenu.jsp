@@ -89,6 +89,7 @@ a:hover {
 	<c:when test="${sessionScope.manager_id != null }">
 	<span>${sessionScope.manager_id}님 안녕하세요.</span> |
 	<a href="${path}/admin_servlet/logout.do">LOGOUT</a> | 
+	<a href="${path}/hplan/index.jsp">User Main</a>
 	</c:when>
 	</c:choose>
 	

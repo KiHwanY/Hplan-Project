@@ -86,10 +86,9 @@ a:hover {
 	<span>${sessionScope.user_id}님 환영합니다.</span> |
 	<a href="${path}/member_servlet/logout.do">LOGOUT</a> | <!-- 로그아웃 -->
 	<a href="${path}/member_servlet/mylist.do?user_id=${sessionScope.user_id}">ME</a> | <!-- 개인 정보 수정 -->
-	<a href="cart.jsp">MYSHOP</a> |
 	<a href="#">CART</a> |
 	<a href="#">ORDER</a> |
-	<a href="#">CMOMUNITY</a> 
+	<a href="${path}/community/communityForm.jsp">COMMUNITY</a> 
 	</c:if>
 	<c:if test="${sessionScope.user_id == null && sessionScope.manager_id == null }">
 	<a href="${path}/member/login.jsp">LOGIN</a> |

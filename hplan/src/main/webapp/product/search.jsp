@@ -87,7 +87,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	  <tr>
 	    <td>${dto.product_id}</td>
 	    <td>${dto.cate_name } </td>
-	    <td><img src="${path}/img/${dto.pf_img}" width="100px" height="100px"></td>
+	    <td><img src="/upload/${dto.pf_img}" width="100px" height="100px"></td>
 	    <td>   
 	    <a href="${path}/product_servlet/product_view.do?product_id=${dto.product_id}">${dto.p_name}</a>
 	  

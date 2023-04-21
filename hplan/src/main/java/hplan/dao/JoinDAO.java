@@ -27,7 +27,10 @@ public class JoinDAO {
 		
 		try {
 			conn = DB.getConn();
-			String sql = "insert into member values (member_seq.nextval,?,?,?,?,?,?,?,?, sysdate,sysdate)";
+			String sql = "insert into member (member_id, user_id, user_pwd ,\r\n"
+					+ "user_name ,"
+					+ "user_email ,zip_code ,"
+					+ "address1 ,address2 ,phone )  values (member_seq.nextval,?,?,?,?,?,?,?,?)";
 					 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,dto.getUser_id());
