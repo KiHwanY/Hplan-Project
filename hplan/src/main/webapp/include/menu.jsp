@@ -88,17 +88,19 @@ a:hover {
 	<a href="${path}/member_servlet/mylist.do?user_id=${sessionScope.user_id}">ME</a> | <!-- 개인 정보 수정 -->
 	<a href="#">CART</a> |
 	<a href="#">ORDER</a> |
-	<a href="${path}/community/communityForm.jsp">COMMUNITY</a> 
+	<a href="${path}/notice_servlet/noticeList.do">COMMUNITY</a> 
 	</c:if>
 	<c:if test="${sessionScope.user_id == null && sessionScope.manager_id == null }">
 	<a href="${path}/member/login.jsp">LOGIN</a> |
 	<a href="${path}/member/join.jsp">JOIN</a> |
+	<a href="${path}/notice_servlet/noticeList.do">COMMUNITY</a> |
 	<a href="${path}/admin/adminLogin.jsp">Admin</a> 
 	</c:if>
 	<c:choose>
 	<c:when test="${sessionScope.manager_id != null }">
 	<span>${sessionScope.manager_id}님 안녕하세요.</span> |
 	<a href="${path}/admin_servlet/logout.do">LOGOUT</a> |
+	<a href="${path}/notice_servlet/noticeList.do">COMMUNITY</a> |
 	<a href="${path}/admin/adminForm.jsp">Admin Page</a> 
 	</c:when>
 	</c:choose>

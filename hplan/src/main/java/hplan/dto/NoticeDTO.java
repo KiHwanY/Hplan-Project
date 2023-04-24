@@ -14,12 +14,21 @@ public class NoticeDTO {
 	private int readcount; //조회수
 	private int ref; //게시물그룹
 	private int re_step; //게시물그룹의 순번
-	private int re_leve;  //답변 단계
+	private int re_level;  //답변 단계
 	private String content; //본문
 	private String ip; //작성자 ip
 	private String filename;
 	private int filesize;
 	private int down; //다운로드 횟수
+	private String show; 
+	
+	
+	public String getShow() {
+		return show;
+	}
+	public void setShow(String show) {
+		this.show = show;
+	}
 	public int getNum() {
 		return num;
 	}
@@ -68,11 +77,11 @@ public class NoticeDTO {
 	public void setRe_step(int re_step) {
 		this.re_step = re_step;
 	}
-	public int getRe_leve() {
-		return re_leve;
+	public int getRe_level() {
+		return re_level;
 	}
-	public void setRe_leve(int re_leve) {
-		this.re_leve = re_leve;
+	public void setRe_level(int re_level) {
+		this.re_level = re_level;
 	}
 	public String getContent() {
 		return content;
@@ -108,7 +117,7 @@ public class NoticeDTO {
 	public String toString() {
 		return "NoticeDTO [num=" + num + ", writer=" + writer + ", subject=" + subject + ", manager_pwd=" + manager_pwd
 				+ ", reg_date=" + reg_date + ", readcount=" + readcount + ", ref=" + ref + ", re_step=" + re_step
-				+ ", re_leve=" + re_leve + ", content=" + content + ", ip=" + ip + ", filename=" + filename
+				+ ", re_level=" + re_level + ", content=" + content + ", ip=" + ip + ", filename=" + filename
 				+ ", filesize=" + filesize + ", down=" + down + "]";
 	}
 	

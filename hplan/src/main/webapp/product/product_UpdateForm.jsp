@@ -89,7 +89,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 					    ${dto.pf_img}
 					    <input type="checkbox" name="fileDel">첨부파일 삭제 <br>
 					   </c:if>
-					  <input type="file" name="file1"  class="form-control">
+					  <input type="file" name="file1"  class="form-control form-control-lg">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -99,7 +99,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 					    ${dto.product_img}
 					    <input type="checkbox" name="fileDe2">첨부파일 삭제 <br>
 					   </c:if>
-					<input type="file" name="file2" id="file2" class="form-control">
+					<input type="file" name="file2" id="file2" class="form-control form-control-lg">
 				</div>
 			</div>
 			
