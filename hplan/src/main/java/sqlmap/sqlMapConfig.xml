@@ -23,5 +23,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	 <mapper resource="/hplan/mapper/product.xml"/>
 	 <mapper resource="/hplan/mapper/admin.xml"/>
 	 <mapper resource="/hplan/mapper/notice.xml"/>
+	 <mapper resource="/hplan/mapper/review.xml"/>
 	</mappers>
 </configuration>

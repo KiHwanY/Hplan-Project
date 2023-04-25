@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="java.util.ArrayList"%>
+    <%@ page import="hplan.dto.ProductDTO" %>
+    <jsp:useBean id="cdb" class="config.DB"/>
+    
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -317,8 +321,61 @@ function pagination() {
 </script>
 <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
 <hr>
+<div id="content">
+		
+<style>
 
-
+#productList {margin-left: 300px; display: flex; flex-wrap: wrap; width: 1200px;}
+#productTitle{margin-left: 300px; margin-bottom: 50px; font-size: 10px; font-weight: normal;}
+#paging{text-align: center;}
+.product {display: flex; flex-direction: column; width: 33%;}
+#p_img {width: 385px; margin: 10px 7px;}
+#name {
+	font-size: 12px;
+	color: #999999;
+	display: flex;
+	font-weight: normal;
+	line-height: 18px;
+	margin: 20px 0 0 7px;
+	flex-direction: column;
+	line-height: 0.75em;
+}
+#price {
+	font-size: 12px;
+	color: #999999;
+	font-style: italic;
+	font-weight: normal;
+	line-height: 18px;
+	display: flex;
+	margin: 10px 0 50px 7px;
+	flex-direction: column;
+	line-height: 0.75em;
+}
+</style>
+<div id="productTitle"></div> 
+<div id="productList">
+	
+		<%
+		ArrayList<ProductDTO> list = cdb.getConn();
+		
+		
+		%>
+		
+		<div class="product">
+			<div>
+				
+				<a href="/tinynest/index.jsp?workgroup=product&work=product_detail&p_code=164">
+					<img id="p_img" src="/tinynest/product_image/salty semiloose knit hoody.jpg">
+				</a>
+			</div>
+			<span id="name">salty semiloose knit hoody</span>
+			<div>
+				<span id="price">68,000원</span>
+			</div>
+		
+		</div>
+</div>
+</div>
 
 
 

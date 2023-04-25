@@ -94,11 +94,10 @@ table tr th,td{
 
 <div align="center" id="com_title">
 
+	
 	<p id="community_font1">COMMUNITY</p>
-	<a id="community_font2">공지사항</a> |
-	<a id="community_font2">상품문의</a> |
-	<a id="community_font2">상품후기</a> |
-	<a id="community_font2">자유게시판</a>
+	<a id="community_font2" href="${path}/notice_servlet/noticeList.do">NOTICE</a> |
+	<a id="community_font2" href="${path}/review_servlet/reviewList.do">REVIEW Q/A</a> 
 </div>
 <hr>
 &nbsp;&nbsp;&nbsp;&nbsp;
