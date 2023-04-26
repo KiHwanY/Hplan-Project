@@ -7,19 +7,7 @@
 
  <style type="text/css">
 
-#home{
-position: absolute;
-width: 40px;
-height: 34px;
-left: 0px;
-top: 15px;
 
-font-style: normal;
-font-weight: 400;
-font-size: 10px;
-line-height: 29px;
-color: black;
-}
 #categoly{
 
 color: black;
@@ -35,30 +23,6 @@ line-height: 18px;
 h1, h2{text-shadow:none; text-align:center;}
 h1{	color: #666; text-transform:uppercase;	font-size:36px;}
 h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
-#joinTitle{margin-left: 300px; margin-bottom: 50px; font-size: 20px; font-weight: normal;}
-#join_font1{
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 36px;
-
-color: #000000; 
-}
-#join_font2{
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 10px;
-line-height: 24px;
-color: #8C8C8C;
-}
-#join {margin-left: 350px;}
-li {list-style-type: none; margin-bottom: 10px;}
-label {color:gray;}
-input {height: 20px;}
-.error{color : red; display: none;}
 body {
  /*  font-family: Verdana, Arial; */
   font-family: 'Open Sans', sans-serif;
@@ -78,7 +42,7 @@ a:hover {
 <div class="bg-dark text-white">
 <h6 align="center"><a href ="${path}/member/join.jsp" class="text-white">HELLO  !  Various Style ,  HPLAN</a></h6>
 </div>
-	<a href="${path}/hplan/index.jsp" id="home">HOME</a>
+	
 <div id="categoly"  style="text-align:right; margin: 0px; padding: 0px 30px 0px 0px;">
 
 

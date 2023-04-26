@@ -13,15 +13,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import common.Constants;
-import hplan.dao.AdminDAO;
 import hplan.dao.ProductDAO;
-import hplan.dto.AdminDTO;
 import hplan.dto.ProductDTO;
 
 
@@ -35,7 +32,7 @@ public class ProductController extends HttpServlet {
 		String url = request.getRequestURI().toString();
 		String contextPath = request.getContextPath();
 		ProductDAO dao = new ProductDAO();
-		AdminDAO admindao = new AdminDAO();
+		
 		if(url.indexOf("product_insert.do") != -1) {
 			File uploadDir = new File(Constants.UPLOAD_PATH);
 			if(!uploadDir.exists()) { // 디렉토리가 없으면
@@ -278,12 +275,33 @@ public class ProductController extends HttpServlet {
 			rd.forward(request, response);
 			
 			
-		}else if(url.indexOf("mainList.do") != -1) {
+		}else if(url.indexOf("contentList.do") != -1) {
+			
+			List<ProductDTO> list = dao.list();
+			
+			request.setAttribute("list", list);
+			String page ="/hplan/content.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
+			
+		}else if(url.indexOf("productViewAction.do") != -1) {
+			int product_id = Integer.parseInt(request.getParameter("product_id"));
+			
+			int sum = dao.priceSum(product_id);
+			
+			ProductDTO dto = dao.product_view(product_id);
 			
 			
+			request.setAttribute("sum", sum);
+			
+			request.setAttribute("dto", dto);
+			
+			String page = "/product/product_Userview.jsp";
+			
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
 			
 		}
-		
 	}
 
 

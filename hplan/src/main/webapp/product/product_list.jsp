@@ -82,12 +82,6 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	    <td >${dto.p_enroll}</td>
 	    </tr>
 	  	</c:when>
-	    <c:otherwise>
-	     <tr>
-	      <td>${dto.product_id}</td>
-	      <td colspan="8" align="center">삭제된 상품입니다.</td>
-	     </tr>
-	    </c:otherwise>
 	    </c:choose>
 	  </c:forEach>
 	
