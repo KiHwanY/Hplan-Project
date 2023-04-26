@@ -40,7 +40,7 @@ line-height: 18px;
 h1, h2{text-shadow:none; text-align:center;}
 h1{	color: #666; text-transform:uppercase;	font-size:36px;}
 h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
-
+span{ font-size: 12px; color: #999999;}
 #container {margin-left: 200px; width: 1200px;}
 #p_img {float: left;}
 
@@ -49,13 +49,14 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 
 select {width: 233px; height: 21px; border: 1px solid gray; font-family: inherit;}
 input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;}
-.TOTAL {font-size: 25px; padding-left: 100px;}
+.TOTAL {font-size: 25px; padding-left: 100px; color: #999999;}
 #review{width: 500px; height:100px; border: none; margin-top: 100px;}
 #reDirectMessage{color: red; font-size: 11px;}
 </style>
 </head>
 <body>
-<%@ include file="../include/adminMenu.jsp" %>
+<%@ include file="../include/menu.jsp" %>
+<form method="post" id="productCart" name="productCart"></form>
 <div id="container">
 
 	<div id="contents">
@@ -79,7 +80,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 								<th><span style="padding-left: 20px;">CATEGORY</span></th>
 									<td>
 										<span style="padding-left: 45px;">
-											<span style="padding-left: 75px;">${dto.cate_name}</span>
+											<span style="padding-left: 75px;" >${dto.cate_name}</span>
 										</span>
 									</td>
 								</tr>
@@ -96,11 +97,10 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 						
 						<tbody>
 							<tr>
-								
-									<td style="padding-left: 110px;">
-										<span>
-											<span style="padding-left: 75px;">${dto.p_name}</span>
-										</span>
+								<td style="padding-left: 110px;">
+									<span>
+										<span style="padding-left: 75px; font-size: 10px;">${dto.p_name}</span>
+									</span>
 									</td>
 								</tr>
 						</tbody>
@@ -109,6 +109,28 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 				
 				
 				<!-- 구분선 -->
+				<span id="line">
+					───────────────────────────────────
+				</span>
+					<!-- detailText -->
+				<div class="detailText">
+					<div>
+						<table id="tableDistance" frame="void" style="margin:10px 0 10px 0;">
+							
+							<tbody>
+								<tr>
+									<th><span style="padding-left: 20px;">Info</span></th>
+									<td style="padding-left: 65px;" align="left">
+										<span>
+											<span style=" font-size: 10px;">${dto.p_info}</span>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+					<!-- 구분선 -->
 				<span id="line">
 					───────────────────────────────────
 				</span>
@@ -137,19 +159,30 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 					<table id="tableDistance" frame="void" style="margin-bottom: 10px;">
 						<tbody>
 							<tr>
-								<th><span style="padding-left: 20px;">STOCK</span></th>
-								<td style="padding-left: 85px; ">
+								<th><span style="padding-left: 20px;">Color</span></th>
+								<td style="padding-left: 35px; ">
 								<span>
-									<span style="padding-left: 75px;">${dto.p_stock}</span>
+									<span style="padding-left: 5px;">
+									<select name="color_option">
+											<option value="one">One Color style</option>
+									</select>
+									</span>
 								</span>
 								</td>
 							</tr>
 					
 							<tr>
-								<th><span  style="padding-left: 20px;">ENROLL</span></th>
-								<td style="text-align: right;">
+								<th><span  style="padding-left: 20px;">SIZE</span></th>
+								<td style="padding-left: 35px; ">
 								<span>
-									<span style="padding-left: 75px;">${dto.p_enroll}</span>
+									<span style="padding-left: 5px;">
+									<select name="size_option">
+											<option value="size" selected>SIZE</option>
+											<option value="M">M(90~95)</option>
+											<option value="L">L(100~105)</option>
+											<option value="XL">XL(105~FRLL)</option>
+									</select>
+									</span>
 								</span>
 								</td>
 							</tr>
@@ -169,16 +202,16 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 					<!-- total 금액 표출-->
 					<table>
 						<tr>
-							<td class="TOTAL">
+							<td class="TOTAL" style="padding-left: 85px; " >
 								TOTAL  ${sum}
 							</td>
 						
 						</tr>
 						<tr>
-							<td  class="addToCart" id="tableDistance" width="20px" style="padding-left: 25px;">
+							<td  class="addToCart" id="cateCheck" width="20px" style="padding-left: 25px;">
 								<br></br><br><br>
-								<a href="${path}/product_servlet/product_updateForm.do?product_id=${dto.product_id}">
-									<img src="../joinimg/product_update.png" alt="상품 수정하기" width="100" height="40"/>
+								<a href="${path}/cart_servlet/productinit.do">
+									<img src="../joinimg/cartimg.png" alt="상품 담기" width="100" height="40"/>
 								</a>
 							</td>
 							<td  class="buyNow" id="tableDistance"  >
@@ -222,8 +255,10 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 	<!-- contents -->
 	
 </div>
+</div>
 <div style="position: fixed; bottom: 40px; right: 5px">
 <a href="#p_img">TOP</a>
 </div>
+
 </body>
 </html>

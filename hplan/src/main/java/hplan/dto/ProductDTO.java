@@ -14,7 +14,21 @@ public class ProductDTO {
 	private Date p_enroll; // 상품 등록일
 	private String cate_name; // 카테고리
 	private String product_img; // 상품 메인
+	private String color; // 제품 색상
+	private String p_size; // 제품 사이즈
 	
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public String getP_size() {
+		return p_size;
+	}
+	public void setP_size(String p_size) {
+		this.p_size = p_size;
+	}
 	private String show; // default 'y' 
 	
 	private int sum ;

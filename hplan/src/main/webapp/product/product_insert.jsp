@@ -82,6 +82,27 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 				</div>
 			</div>
 			<br>
+			<br>		
+			<div class="form-group row">
+				<label class="col-sm-2">제품 색상</label>
+				<div class="col-sm-5">
+					<input type="text" name="color" id="color" class="form-control" placeholder="One color style">
+				</div>
+			</div>
+			<br>
+			<br>		
+			<div class="form-group row">
+				<label class="col-sm-2">SIZE</label>
+				<div class="col-sm-3">
+					<select class="form-control" name="p_size" id="p_size">
+						<option value="size" selected>선택</option>
+						<option value="M">M(90~95)</option>
+						<option value="L">L(100~105)</option>
+						<option value="XL">XL(105~FRLL)</option>
+					</select>
+				</div>
+			</div>
+			<br>
 			<div class="form-group row">
 				<label class="col-sm-2">상품 메인 이미지</label>
 				<div class="col-md-4" style="height: 40px;">
@@ -97,16 +118,17 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 			</div>
 			<br>
 			<div class="form-group row">
-				<div class="col-sm-offset-2 col-sm-10" align="center">
-					<input type="button" class="btn btn-primary" value="상품 등록" id="btninsert">
-					<input type="button" class="btn btn-light" value="취소" id="btnreset">
-					
+				<div class="col-sm-offset-2 col-sm-6" align="center">
+					<input type="button" class="btn btn-primary btn-lg" value="상품 등록" id="btninsert">
+					<input type="button" class="btn btn-light btn-lg" value="취소" id="btnreset">	
 				</div>
 			</div>
 			
 		</form>
 		
 	</div>
+	
+	<hr>
 <script type="text/javascript">
 $(function() {
 	$("#btninsert").click(function() {
@@ -118,8 +140,16 @@ $(function() {
 			alert("카테고리를 선택하세요.");
 			return false;
 		}
+		if(form1.p_size.value == "size"){
+			alert("사이즈를 선택하세요.");
+			return false;
+		}
 		if(!form1.p_name.value){
 			alert("상품명을 입력하세요.");
+			return false;
+		}
+		if(!form1.color.value){
+			alert("색상을 입력하세요.");
 			return false;
 		}
 		if(!form1.p_price.value){

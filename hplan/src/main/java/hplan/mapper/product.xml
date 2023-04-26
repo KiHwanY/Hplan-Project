@@ -9,8 +9,8 @@ select * from product
 order by product_id desc
 </select>
 <insert id="product_insert">
-insert into product(product_id, p_name, p_price ,p_info ,p_stock,pf_img,cate_name,product_img)
-values (product_seq.nextval, #{p_name},#{p_price},#{p_info},#{p_stock},#{pf_img},#{cate_name},#{product_img})
+insert into product(product_id, p_name, p_price ,p_info ,p_stock,pf_img,cate_name,product_img,color,p_size)
+values (product_seq.nextval, #{p_name},#{p_price},#{p_info},#{p_stock},#{pf_img},#{cate_name},#{product_img},#{color},#{p_size})
 
 </insert>
 <select id="product_view" resultType="hplan.dto.ProductDTO">
@@ -29,7 +29,7 @@ where product_id=#{product_id}
 </select>
 <update id="productUpdate">
 update product
-set p_name =#{p_name},p_price =#{p_price},p_info=#{p_info},
+set p_name =#{p_name},p_price =#{p_price},p_info=#{p_info},color=#{color},p_size=#{p_size},
 p_stock=#{p_stock},cate_name=#{cate_name},pf_img=#{pf_img},product_img=#{product_img}
 where product_id=#{product_id}
 </update>

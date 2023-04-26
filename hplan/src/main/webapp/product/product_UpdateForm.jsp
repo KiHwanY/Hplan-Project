@@ -37,7 +37,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 		</div>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<div class="container">
+	<div class="container-sm">
 		<form name="product_Update" id="product_Update"  enctype="multipart/form-data"
 		class="form-horizontal" method="post">
 			<div class="form-group row">
@@ -82,6 +82,27 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 				</div>
 			</div>
 			<br>
+			<br>		
+			<div class="form-group row">
+				<label class="col-sm-2">제품 색상</label>
+				<div class="col-sm-5">
+					<input type="text" name="color" id="color" class="form-control" placeholder="One color style"  value="${dto.color}">
+				</div>
+			</div>
+			<br>
+			<br>		
+			<div class="form-group row">
+				<label class="col-sm-2">SIZE</label>
+				<div class="col-sm-3">
+					<select class="form-control" name="p_size" id="p_size">
+						<option value="size" selected>선택</option>
+						<option value="M">M(90~95)</option>
+						<option value="L">L(100~105)</option>
+						<option value="XL">XL(105~FRLL)</option>
+					</select>
+				</div>
+			</div>
+			<br>
 			<div class="form-group row">
 				<label class="col-sm-2">상품 메인 이미지</label>
 				<div class="col-sm-3">
@@ -92,6 +113,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 					  <input type="file" name="file1"  class="form-control form-control-lg">
 				</div>
 			</div>
+			<br>
 			<div class="form-group row">
 				<label class="col-sm-2">상품 상세 이미지</label>
 				<div class="col-sm-3">
@@ -107,9 +129,9 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10" align="center">
 					<input type="hidden" id="product_id" value="${dto.product_id}">
-					<input type="button" class="btn btn-primary" value="상품 수정" id="btnUpdate">
-					<input type="button" class="btn btn-light" value="취소" id="btnreset">
-					<input type="button" class="btn btn-dark" value="상품 삭제" id="btndelete">
+					<input type="button" class="btn btn-primary btn-lg" value="상품 수정" id="btnUpdate">
+					<input type="button" class="btn btn-light btn-lg" value="취소" id="btnreset">
+					<input type="button" class="btn btn-dark btn-lg" value="상품 삭제" id="btndelete">
 				</div>
 			</div>
 			

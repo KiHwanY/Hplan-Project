@@ -41,7 +41,9 @@ public class ProductController extends HttpServlet {
 			MultipartRequest multi = new MultipartRequest(request, Constants.UPLOAD_PATH,Constants.MAX_UPLOAD, "utf-8" , new DefaultFileRenamePolicy());
 			
 			String cate_name = multi.getParameter("cate_name");
+			String p_size = multi.getParameter("p_size");
 			String p_name = multi.getParameter("p_name");
+			String color=multi.getParameter("color");
 			int p_price = Integer.parseInt( multi.getParameter("p_price"));
 			String p_info = multi.getParameter("p_info");
 			int p_stock = Integer.parseInt(multi.getParameter("p_stock"));
@@ -83,6 +85,9 @@ public class ProductController extends HttpServlet {
 			dto.setP_price(p_price);
 			dto.setP_info(p_info);
 			dto.setP_stock(p_stock);
+			dto.setColor(color);
+			dto.setP_size(p_size);
+			
 			
 			if(pf_img == null || pf_img.trim().equals("")) {
 				pf_img="-";
@@ -155,7 +160,9 @@ public class ProductController extends HttpServlet {
 			
 			int product_id = Integer.parseInt(multi.getParameter("product_id"));
 			String cate_name = multi.getParameter("cate_name");
+			String color = multi.getParameter("color");
 			String p_name = multi.getParameter("p_name");
+			String p_size = multi.getParameter("p_size");
 			int p_price = Integer.parseInt( multi.getParameter("p_price"));
 			String p_info = multi.getParameter("p_info");
 			int p_stock = Integer.parseInt(multi.getParameter("p_stock"));
@@ -198,6 +205,9 @@ public class ProductController extends HttpServlet {
 			dto.setP_price(p_price);
 			dto.setP_info(p_info);
 			dto.setP_stock(p_stock);
+			dto.setColor(color);
+			dto.setP_size(p_size);
+			
 			
 			//파일 첨부를 하지 않을 경우 기존 정보를 가져옴
 			if(pf_img == null || pf_img.trim().equals("")) {

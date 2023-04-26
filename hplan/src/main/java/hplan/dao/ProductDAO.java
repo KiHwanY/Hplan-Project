@@ -50,6 +50,9 @@ public class ProductDAO {
 		try {
 			session = MybatisManager.getInstance().openSession();
 			dto = session.selectOne("product.product_view", product_id);
+			String content = dto.getP_info();
+			content=content.replace("\n", "<br>");
+			dto.setP_info(content);
 			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
