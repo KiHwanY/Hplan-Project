@@ -2,6 +2,7 @@ package hplan.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -48,6 +49,7 @@ public class CartController extends HttpServlet {
 			Map<String, Object> map = new HashMap<>();
 			HttpSession session = request.getSession();
 			String user_id =(String)session.getAttribute("user_id");
+			System.out.println("유저 아이디 : " + user_id);
 			if(user_id != null) { 
 				List<CartDTO> list = dao.listCart(user_id);
 				int sumMoney = dao.sumMoney(user_id);
@@ -61,9 +63,36 @@ public class CartController extends HttpServlet {
 				map.put("count", list.size());
 				
 				request.setAttribute("map", map);
+				
 				String page="/cart/cart_list.jsp";
 				RequestDispatcher rd = request.getRequestDispatcher(page);
 				rd.forward(request, response);
+				
+			}
+			
+		}else if(url.indexOf("update.do") != -1) {
+			HttpSession session = request.getSession();
+			String user_id =(String)session.getAttribute("user_id");
+			
+			if(user_id != null) {
+				
+				int amount = Integer.parseInt(request.getParameter("amount"));
+				int cart_id =Integer.parseInt(request.getParameter("cart_id")); 
+				System.out.println("수량 : " + amount);
+				System.out.println("카트 번호 : " + cart_id);
+				if(amount != 0) {
+					CartDTO dto = new CartDTO();
+
+					dto.setAmount(amount);
+					dto.setCart_id(cart_id);
+					dao.modifyCart(dto);
+				}else {
+					dao.delete(cart_id);
+				}
+				String page="/cart_servlet/cartList.do";
+				response.sendRedirect(page);
+				
+				
 			}
 			
 		}

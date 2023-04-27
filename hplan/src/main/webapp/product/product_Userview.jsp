@@ -42,7 +42,7 @@ h1{	color: #666; text-transform:uppercase;	font-size:36px;}
 h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
 span{ font-size: 12px; color: #999999;}
 #container {margin-left: 200px; width: 1200px;}
-#p_img {float: left;}
+#pf_img {float: left;}
 
 #line {color: gray; opacity: 50%; margin-left: 40px; padding-left: 49px;}
 
@@ -62,7 +62,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 	<div id="contents">
 
 
-		<!-- 상단 제품 정보(detail)  -->
+	<!-- 상단 제품 정보(detail)  -->
 		<div class="detail">
 			<div class="detailArea ">
 

@@ -43,4 +43,32 @@ public class CartDAO {
 		return sumMoney;
 	}
 
+	public void modifyCart(CartDTO dto) {
+		SqlSession session = null;
+		try {
+			session=MybatisManager.getInstance().openSession();
+			session.update("cart.modifyCart", dto);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(session != null) session.close();
+		}
+		
+	}
+
+	public void delete(int cart_id) {
+		SqlSession session = null;
+		try {
+			session = MybatisManager.getInstance().openSession();
+			session.delete("cart.delete", cart_id);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(session != null) session.close();
+		}
+		
+	}
+
 }

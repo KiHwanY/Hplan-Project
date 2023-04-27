@@ -15,4 +15,16 @@ select nvl(sum(p.p_price*amount), 0) money
 from product p , cart c
 where p.product_id=c.product_id and user_id=#{user_id}
 </select>
+<!-- 장바구니 수정  -->
+<update id="modifyCart">
+update cart
+set amount = #{amount}
+where  cart_id =#{cart_id}
+</update>
+<!-- 장바구니 개별 상품 삭제 -->
+<delete id="delete">
+delete from cart
+where cart_id = #{cart_id}
+</delete>
+
 </mapper>

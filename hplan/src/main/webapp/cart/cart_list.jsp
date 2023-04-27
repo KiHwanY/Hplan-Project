@@ -57,6 +57,14 @@ font-size: 10px;
 line-height: 24px;
 color: #8C8C8C;
 }
+table th{
+	font-size: 18px;
+	color: #999999;
+}
+#totalMoney{
+ font-size: 25px;
+ color: #000000;
+}
 
 </style>
 </head>
@@ -71,7 +79,7 @@ color: #8C8C8C;
 <hr>
 &nbsp;&nbsp;&nbsp;&nbsp;
 
-<form id="form1"  enctype="multipart/form-data" method="post">
+<form id="form1" name="form1" enctype="multipart/form-data" method="post" action="${path}/cart_servlet/update.do">
 <table border="1" style="width: 100%;" >
   <tr>
     <th>카테고리</th>
@@ -97,14 +105,14 @@ color: #8C8C8C;
 	    </td>
 	    <td>${row.p_price}원</td>
 	    <td align="center">
-	     <input type="number" name="amount" value="${row.amount}" style="width: 100px; height: 30px; text-align: center;"><br>
-	     <input type="hidden" name="cart_id" value="${row.cart_id}">
-	     <button>변경</button>
+	     <input type="number" id="amount" name="amount" value="${row.amount}" style="width: 50px; height: 30px;">
+	    <input type="hidden" id="cart_id"name="cart_id" value="${row.cart_id}">
 	    </td>
-	    <td >${map.fee}</td>
-	    <td>${map.sumMoney}</td>
+	    <td >${map.fee}원</td>
+	    <td>${map.sumMoney}원</td>
 	    <td>
-	    <button>삭제</button>
+	    <input type="submit" id="btnUpdate" value="상품수정" style="width: 50px; height: 30px;" ><br>
+	    <input class="btn btn-dark" type="button" id="cartDelete" value="삭제">
 	    </td>
 	    </tr>
 	  	</c:when>
@@ -112,10 +120,53 @@ color: #8C8C8C;
 	  </c:forEach>
 	
 </table>
-<div>
-	<button type="button" id="btnLIst">상품목록</button>
+<div align="right">
+	<input class="btn btn-secondary" type="button" id="AllDelete" value="장바구니비우기">
+</div>
+&nbsp;&nbsp;&nbsp;
+<table  border="1" style="width: 100%;" >
+<tr>
+	<th>총 상품금액</th>
+	<th>총 배송비</th>
+	<th>결제예정급액</th>
+</tr>
+<tr id="totalMoney">
+	
+	<td>${map.sumMoney}원</td>
+	<td>+${map.fee}원</td>
+	<td>=&nbsp;${map.sum}원</td>
+
+</tr>
+</table>
+<div align="right">
+	<input class="btn btn-secondary" type="button" id="mainList" value="쇼핑계속하기">
 </div>
 </form>
+<script type="text/javascript">
+var form1 = document.form1;
+
+$(function() {
+	
+	
+	$("#cartDelete").click(function() {
+		if(confirm("선택 상품을 삭제하시겠습니까?")){	
+		document.form1.action="${path}/cart_servlet/delete.do";
+		document.form1.submit();
+		}
+	});
+	
+	$("#AllDelete").click(function() {
+		if(confirm("전체 상품을 삭제하시겠습니까?")){
+		document.form1.action="${path}/cart_servlet/Alldelete.do";
+		document.form1.submit();
+		}
+	});
+	$("#mainList").click(function() {
+		location.href="../hplan/index.jsp";
+	});
+});
+</script>
+
 
 </body>
 </html>
