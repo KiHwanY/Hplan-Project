@@ -56,7 +56,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
-<form method="post" id="productCart" name="productCart"></form>
+<form method="post" id="productCart" name="productCart">
 <div id="container">
 
 	<div id="contents">
@@ -67,7 +67,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 			<div class="detailArea ">
 
 				<!-- 이미지 영역 -->
-				<div id="p_img">
+				<div id="pf_img" name="pf_img">
 					<img src="/upload/${dto.pf_img}"
 					alt="대표이미지" width="470px;" height="470px;" />
 				</div>
@@ -115,7 +115,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 					<!-- detailText -->
 				<div class="detailText">
 					<div>
-						<table id="tableDistance" frame="void" style="margin:10px 0 10px 0;">
+						<table id="p_info" frame="void" style="margin:10px 0 10px 0;">
 							
 							<tbody>
 								<tr>
@@ -139,7 +139,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 				<!-- detailText -->
 				<div class="detailText">
 					<div>
-						<table id="tableDistance" frame="void" style="margin:10px 0 10px 0;">
+						<table id="p_price" frame="void" style="margin:10px 0 10px 0;">
 							
 							<tbody>
 								<tr>
@@ -210,6 +210,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 						<tr>
 							<td  class="addToCart" id="cateCheck" width="20px" style="padding-left: 25px;">
 								<br></br><br><br>
+								<input type="hidden" id="product_id" name="product_id" value="${dto.product_id}">
 								<a href="${path}/cart_servlet/productinit.do">
 									<img src="../joinimg/cartimg.png" alt="상품 담기" width="100" height="40"/>
 								</a>
@@ -256,9 +257,9 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 	
 </div>
 </div>
+</form>
 <div style="position: fixed; bottom: 40px; right: 5px">
 <a href="#p_img">TOP</a>
 </div>
-
 </body>
 </html>

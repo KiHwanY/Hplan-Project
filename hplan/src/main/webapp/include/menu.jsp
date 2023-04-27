@@ -50,7 +50,7 @@ a:hover {
 	<span>${sessionScope.user_id}님 환영합니다.</span> |
 	<a href="${path}/member_servlet/logout.do">LOGOUT</a> | <!-- 로그아웃 -->
 	<a href="${path}/member_servlet/mylist.do?user_id=${sessionScope.user_id}">ME</a> | <!-- 개인 정보 수정 -->
-	<a href="#">CART</a> |
+	<a href="${path}/cart_servlet/cartList.do?user_id=${sessionScope.user_id}">CART</a> | <!-- 장바구니 -->
 	<a href="#">ORDER</a> |
 	<a href="${path}/notice_servlet/noticeList.do">COMMUNITY</a> 
 	</c:if>

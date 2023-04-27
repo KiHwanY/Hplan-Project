@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<%@ include file="../include/header.jsp" %>
 </head>
 <body>
 
@@ -63,7 +62,7 @@
 					<p class="call">12300-00-000000</p>
 					<p class="s_txt">
 						국민은행<br> 
-						예금주 : (주)STYLE IS YOU
+						예금주 : (주) HPLAN
 					</p>
 				</div>
 			</div>
@@ -74,11 +73,11 @@
 				<h4>BOARD</h4>
 				<div class="con">
 					<ul>
-						<!--<li><a href="/cscenter/consultReg.asp"><span>1:1문의</span></a></li>-->
+						
 						<li><a href="#"><span>문의게시판</span></a></li>
 						<li><a href="#"><span>FAQ</span></a></li>
 						<li><a href="#"><span>이용약관</span></a></li>
-						<li><a href="#"><span>개인정보처리방침</span></a></li>
+						
 					</ul>
 				</div>
 			</div>

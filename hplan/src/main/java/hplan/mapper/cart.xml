@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cart">
+<select id="listCart" resultType="hplan.dto.CartDTO">
+select cart_id, m.user_id, p.product_id,p.p_name,amount,p.p_price,p.pf_img,p.cate_name,
+(p.p_price*amount) money
+from member m, cart c, product p
+where m.user_id=c.user_id and p.product_id=c.product_id and m.user_id=#{user_id}
+</select>
+<select id="sumMoney" resultType="int">
+select nvl(sum(p.p_price*amount), 0) money
+from product p , cart c
+where p.product_id=c.product_id and user_id=#{user_id}
+</select>
+</mapper>

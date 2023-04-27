@@ -1,9 +1,6 @@
 <%@page import="hplan.dao.ProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@page import="java.util.ArrayList"%>
-    <%@ page import="hplan.dto.ProductDTO" %>
-    <jsp:useBean id="cdb" class="config.DB"/>
     
 <!DOCTYPE html>
 <html lang="en" >
@@ -371,5 +368,6 @@ function pagination() {
 <div id="content"></div>
 
 
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>
