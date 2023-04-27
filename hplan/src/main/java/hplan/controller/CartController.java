@@ -95,6 +95,19 @@ public class CartController extends HttpServlet {
 				
 			}
 			
+		}else if(url.indexOf("updateForm.do") != -1) {
+			HttpSession session = request.getSession();
+			String user_id =(String)session.getAttribute("user_id");
+			
+			if(user_id != null) {
+				List<CartDTO> list = dao.listCart(user_id);
+				
+				request.setAttribute("list", list);
+				String page ="/cart/updateForm.jsp";
+				RequestDispatcher rd = request.getRequestDispatcher(page);
+				rd.forward(request, response);
+			}
+			
 		}
 		
 	}

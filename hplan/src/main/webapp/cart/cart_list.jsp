@@ -79,7 +79,7 @@ table th{
 <hr>
 &nbsp;&nbsp;&nbsp;&nbsp;
 
-<form id="form1" name="form1" enctype="multipart/form-data" method="post" action="${path}/cart_servlet/update.do">
+<form id="form1" name="form1" enctype="multipart/form-data" method="post" action="${path}/cart_servlet/updateForm.do">
 <table border="1" style="width: 100%;" >
   <tr>
     <th>카테고리</th>
@@ -105,13 +105,13 @@ table th{
 	    </td>
 	    <td>${row.p_price}원</td>
 	    <td align="center">
-	     <input type="number" id="amount" name="amount" value="${row.amount}" style="width: 50px; height: 30px;">
-	    <input type="hidden" id="cart_id"name="cart_id" value="${row.cart_id}">
+	     ${row.amount}
 	    </td>
 	    <td >${map.fee}원</td>
 	    <td>${map.sumMoney}원</td>
 	    <td>
-	    <input type="submit" id="btnUpdate" value="상품수정" style="width: 50px; height: 30px;" ><br>
+	    <input type="hidden" id="cart_id"name="cart_id" value="${row.cart_id}">
+	    <input class="btn btn-light" type="submit" id="btnUpdate" value="상품변경" ><br>
 	    <input class="btn btn-dark" type="button" id="cartDelete" value="삭제">
 	    </td>
 	    </tr>
