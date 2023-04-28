@@ -160,7 +160,7 @@ body, hmtl{background: #ecf0f1; font-family: 'Anton', sans-serif;}
 	background:#fff;
 	opacity:0.5;
 	position:relative;
-  top:0;
+  	top:0;
   
   
 }

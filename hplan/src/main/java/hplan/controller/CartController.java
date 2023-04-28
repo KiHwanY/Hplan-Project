@@ -31,14 +31,36 @@ public class CartController extends HttpServlet {
 			HttpSession session = request.getSession();
 			String user_id = (String) session.getAttribute("user_id");
 			if(user_id != null) { //로그인 한 경우
+				
 				int product_id = Integer.parseInt(request.getParameter("product_id"));
-				int amount = Integer.parseInt("");
+				int amount = Integer.parseInt(request.getParameter("amount"));
+			
+				String color = request.getParameter("color_option");
+				String p_size = request.getParameter("size_option");
+				
+				
 				CartDTO dto = new CartDTO();
+				
+				
+				
+				System.out.println("product_id : " + product_id );
+				System.out.println("amount : " + amount );
+				System.out.println("color : " + color );
+				System.out.println("p_size : " + p_size );
+				
+				dto.setUser_id(user_id);
+				dto.setProduct_id(product_id);
+				dto.setAmount(amount);
+				dto.setColor(color);
+				dto.setP_size(p_size);
+				
+				
 				
 				dao.insertCart(dto);		
 				
 				String page = "/cart/cart_list.jsp";
 				response.sendRedirect(contextPath+page);
+				
 			}else {
 				String page="/member/login.jsp";
 				response.sendRedirect(contextPath+page);

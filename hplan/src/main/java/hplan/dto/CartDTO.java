@@ -5,7 +5,6 @@ public class CartDTO {
 	private int cart_id; 
 	private String user_id; // member 테이블
 	private int product_id;  // cart
-	private int p_stock; 
 	private int amount;
 	private int money; // 계산 용도 테이블 x 
 	private String p_name;
@@ -76,12 +75,6 @@ public class CartDTO {
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
-	public int getP_stock() {
-		return p_stock;
-	}
-	public void setP_stock(int p_stock) {
-		this.p_stock = p_stock;
-	}
 	public int getAmount() {
 		return amount;
 	}
@@ -90,9 +83,11 @@ public class CartDTO {
 	}
 	@Override
 	public String toString() {
-		return "CartDTO [cart_id=" + cart_id + ", user_id=" + user_id + ", product_id=" + product_id + ", p_stock="
-				+ p_stock + ", amount=" + amount + "]";
+		return "CartDTO [cart_id=" + cart_id + ", user_id=" + user_id + ", product_id=" + product_id + ", amount="
+				+ amount + ", money=" + money + ", p_name=" + p_name + ", pf_img=" + pf_img + ", color=" + color
+				+ ", p_size=" + p_size + ", p_price=" + p_price + ", cate_name=" + cate_name + "]";
 	}
+
 	
 	
 	

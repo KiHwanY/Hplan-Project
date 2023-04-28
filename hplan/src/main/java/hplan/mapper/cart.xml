@@ -5,13 +5,13 @@
 
 <mapper namespace="cart">
 <select id="listCart" resultType="hplan.dto.CartDTO">
-select cart_id, m.user_id, p.product_id,p.p_name,amount,p.p_price,p.pf_img,p.cate_name,
-(p.p_price*amount) money
+select cart_id, m.user_id, p.product_id,p.p_name,c.amount,p.p_price,p.pf_img,p.cate_name,
+(p.p_price*c.amount) money
 from member m, cart c, product p
 where m.user_id=c.user_id and p.product_id=c.product_id and m.user_id=#{user_id}
 </select>
 <select id="sumMoney" resultType="int">
-select nvl(sum(p.p_price*amount), 0) money
+select nvl(sum(p.p_price*c.amount), 0) money
 from product p , cart c
 where p.product_id=c.product_id and user_id=#{user_id}
 </select>
@@ -26,5 +26,9 @@ where  cart_id =#{cart_id}
 delete from cart
 where cart_id = #{cart_id}
 </delete>
+<insert id="insertCart">
+insert into cart(cart_id,user_id,product_id,amount,color,p_size)
+values (cart_seq.nextval,#{user_id},#{product_id},#{amount},#{color},#{p_size})
+</insert>
 
 </mapper>

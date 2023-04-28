@@ -70,6 +70,8 @@ table th{
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
+<div id="userid">${user_id}</div>
+
 <div id="cartTitle">CART</div>
 <div align="center">
 
@@ -84,6 +86,7 @@ table th{
   <tr>
     <th>카테고리</th>
     <th>이미지</th>
+    <th>상품명</th>
     <th>상품정보</th>
     <th>판매가</th>
     <th>수량</th>
@@ -95,13 +98,21 @@ table th{
   </tr>
   <c:forEach var="row" items="${map.list}">
   <c:choose>
-   <c:when test="${row.user_id != null}">
+  
+   <c:when test="${user_id != null}">
 	  <tr>
 	    <td>${row.cate_name } </td>
-	    <td><img src="/upload/${row.pf_img}" width="100px" height="100px"></td>
+	    <td>
+	    <a href="${path}/product_servlet/productViewAction.do?product_id=${row.product_id}">
+	    <img src="/upload/${row.pf_img}" width="100px" height="100px">
+	    </a>
+	    </td>
 	    <td>   
-	    <a href="${path}/product_servlet/product_view.do?product_id=${row.product_id}">${row.p_name}</a>
-	  
+	    <a href="${path}/product_servlet/productViewAction.do?product_id=${row.product_id}">${row.p_name}</a>
+	    </td>
+	    <td>
+	    ${row.color} <br>
+	    ${row.p_size }
 	    </td>
 	    <td>${row.p_price}원</td>
 	    <td align="center">

@@ -63,21 +63,6 @@ public class ProductDAO {
 		return dto;
 	}
 
-	public int priceSum(int product_id) {
-		int sum = 0;
-		
-		SqlSession session = null;
-		try {
-			session= MybatisManager.getInstance().openSession();
-			sum = session.selectOne("product.product_priceSum", product_id);
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return sum;
-	}
 
 	public String getFileName(int product_id) {
 		String result = "";
@@ -136,6 +121,34 @@ public class ProductDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	public int priceSum(int product_id) {
+		int sum = 0;
+		SqlSession session = null;
+		try {
+			session = MybatisManager.getInstance().openSession();
+			sum = session.selectOne("product.product_priceSum", product_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(session != null) session.close();
+		}
+		return sum;
+	}
+
+	public void updateCount(int product_id) {
+		SqlSession session = null;
+		try {
+			session=MybatisManager.getInstance().openSession();
+			session.update("product.updateCount", product_id);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(session != null) session.close();
+		}
+		
 	}
 
 

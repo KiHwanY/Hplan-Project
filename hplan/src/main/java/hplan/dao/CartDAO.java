@@ -12,7 +12,15 @@ public class CartDAO {
 	
 	public void insertCart(CartDTO dto) {
 		SqlSession session =null;
-		
+		try {
+			session=MybatisManager.getInstance().openSession();
+			session.insert("cart.insertCart", dto);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(session != null) session.close();
+		}
 	}
 
 	public List<CartDTO> listCart(String user_id) {

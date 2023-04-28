@@ -296,14 +296,7 @@ public class ProductController extends HttpServlet {
 			
 		}else if(url.indexOf("productViewAction.do") != -1) {
 			int product_id = Integer.parseInt(request.getParameter("product_id"));
-			
-			int sum = dao.priceSum(product_id);
-			
 			ProductDTO dto = dao.product_view(product_id);
-			
-			
-			request.setAttribute("sum", sum);
-			
 			request.setAttribute("dto", dto);
 			
 			String page = "/product/product_Userview.jsp";

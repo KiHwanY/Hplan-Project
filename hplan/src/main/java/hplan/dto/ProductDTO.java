@@ -16,7 +16,15 @@ public class ProductDTO {
 	private String product_img; // 상품 메인
 	private String color; // 제품 색상
 	private String p_size; // 제품 사이즈
+	private int amount; // 수량
 	
+	
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
 	public String getColor() {
 		return color;
 	}

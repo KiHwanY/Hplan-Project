@@ -40,16 +40,16 @@ line-height: 18px;
 h1, h2{text-shadow:none; text-align:center;}
 h1{	color: #666; text-transform:uppercase;	font-size:36px;}
 h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
-span{ font-size: 12px; color: #999999;}
+span{ font-size: 18px; color: #999999;}
 #container {margin-left: 200px; width: 1200px;}
 #pf_img {float: left;}
 
 #line {color: gray; opacity: 50%; margin-left: 40px; padding-left: 49px;}
 
-
+#tableDistance{margin-left: 100px; padding-left: 100px;}
 select {width: 233px; height: 21px; border: 1px solid gray; font-family: inherit;}
-input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;}
-.TOTAL {font-size: 25px; padding-left: 100px; color: #999999;}
+input {width: 233px; height: 17px; border: 1px solid gray; font-family: inherit;}
+.TOTAL {font-size: 25px; padding-left: 100px; color: #000000;}
 #review{width: 500px; height:100px; border: none; margin-top: 100px;}
 #reDirectMessage{color: red; font-size: 11px;}
 </style>
@@ -65,7 +65,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 	<!-- 상단 제품 정보(detail)  -->
 		<div class="detail">
 			<div class="detailArea ">
-
+			
 				<!-- 이미지 영역 -->
 				<div id="pf_img" name="pf_img">
 					<img src="/upload/${dto.pf_img}"
@@ -146,7 +146,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 									<th><span style="padding-left: 20px;">PRICE</span></th>
 									<td style="padding-left: 65px;">
 										<span>
-											<span style="padding-left: 75px;">${dto.p_price}</span>원
+											<span style="padding-left: 75px; color: #000000; font-size: 20px;">${dto.p_price}원</span>
 										</span>
 									</td>
 								</tr>
@@ -164,6 +164,8 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 								<span>
 									<span style="padding-left: 5px;">
 									<select name="color_option">
+											<option value="default" selected>-[필수] 옵션을 선택해 주세요 -</option>
+											<option disabled="disabled" >-------------------</option>
 											<option value="one">One Color style</option>
 									</select>
 									</span>
@@ -177,11 +179,23 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 								<span>
 									<span style="padding-left: 5px;">
 									<select name="size_option">
-											<option value="size" selected>SIZE</option>
+											<option value="default" selected>-[필수] 옵션을 선택해 주세요 -</option>
+											<option disabled="disabled" >-------------------</option>
 											<option value="M">M(90~95)</option>
 											<option value="L">L(100~105)</option>
 											<option value="XL">XL(105~FRLL)</option>
 									</select>
+									</span>
+								</span>
+								</td>
+							</tr>
+							<tr>
+								<th><span style="padding-left: 20px;">AMOUNT</span></th>
+								<td style="padding-left: 35px; ">
+								<span>
+									<span style="padding-left: 5px;">
+									
+									<input type="number"  id="amount" name="amount">
 									</span>
 								</span>
 								</td>
@@ -201,19 +215,14 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 
 					<!-- total 금액 표출-->
 					<table>
-						<tr>
-							<td class="TOTAL" style="padding-left: 85px; " >
-								TOTAL  ${sum}
-							</td>
 						
-						</tr>
 						<tr>
-							<td  class="addToCart" id="cateCheck" width="20px" style="padding-left: 25px;">
+							<td  class="addToCart" id="tableDistance" width="20px" style="padding-left: 25px;">
 								<br></br><br><br>
 								<input type="hidden" id="product_id" name="product_id" value="${dto.product_id}">
-								<a href="${path}/cart_servlet/productinit.do">
+								<button type="button" id="btnCartinsert" name="btnCartinsert">
 									<img src="../joinimg/cartimg.png" alt="상품 담기" width="100" height="40"/>
-								</a>
+								</button>
 							</td>
 							<td  class="buyNow" id="tableDistance"  >
 								<br></br><br><br>
@@ -230,7 +239,7 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 
 			</div>
 			<!-- //detail Area -->
-
+			
 		</div>
 		<!-- //상단 제품 정보(detail) -->
 			<br><hr>
@@ -251,8 +260,8 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 			
 		</div>
 		<!-- //하단부 -->
-	
 	</div>
+	
 	<!-- contents -->
 	
 </div>
@@ -261,5 +270,31 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 <div style="position: fixed; bottom: 40px; right: 5px">
 <a href="#p_img">TOP</a>
 </div>
+<script type="text/javascript">
+$(function() {
+	$("#btnCartinsert").click(function() {
+var form1 = document.productCart;
+		
+		
+		if(form1.color_option.value == "default"){
+			alert("색상을 선택하세요.");
+			return false;
+		}
+		if(form1.size_option.value == "default"){
+			alert("사이즈를 선택하세요.");
+			return false;
+		}
+		if(!form1.amount.value){
+			alert("수량을 골라주세요.");
+			return false;
+		}
+		document.productCart.action = "${path}/cart_servlet/productinit.do";
+		document.productCart.submit();
+	
+	});
+});
+
+
+</script>
 </body>
 </html>
