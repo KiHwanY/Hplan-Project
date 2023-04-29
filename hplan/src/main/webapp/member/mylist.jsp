@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>join</title>
+<title>Member</title>
 <%@ include file="../include/header.jsp" %>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
@@ -77,6 +77,7 @@ input {height: 20px;}
 img.absolute {
 		position: absolute;
 		left: 1200px;
+		
 }
 </style>
 </head>
@@ -153,6 +154,7 @@ img.absolute {
 		<button type="button" id="btndelete" ><img src="../joinimg/memberreset.png" width="70" height="20" class="absolute" > </button>
 	</div>
 </form>
+<br><br>
 <script type="text/javascript">
 $("#btndelete").click(function() {
 	if(confirm("회원 탈퇴를 하시겠습니까?")){
@@ -239,5 +241,6 @@ $("#postSearch").click(function() {
 	}).open();
 });
 </script>
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

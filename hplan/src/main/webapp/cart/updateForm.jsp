@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>join</title>
+<title>Cart</title>
 <%@ include file="../include/header.jsp" %>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
@@ -261,5 +261,6 @@ input {width: 227px; height: 17px; border: 1px solid gray; font-family: inherit;
 <div style="position: fixed; bottom: 40px; right: 5px">
 <a href="#p_img">TOP</a>
 </div>
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

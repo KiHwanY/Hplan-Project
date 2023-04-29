@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import hplan.dto.CartDTO;
+import hplan.dto.ProductDTO;
 import sqlmap.MybatisManager;
 
 public class CartDAO {
@@ -79,4 +80,23 @@ public class CartDAO {
 		
 	}
 
-}
+	public void deleteAll(String user_id) {
+		SqlSession session = null;
+		try {
+			session = MybatisManager.getInstance().openSession();
+			session.delete("cart.deleteAll", user_id);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(session != null) session.close();
+		}
+		
+		
+	}
+
+
+
+	}
+
+

@@ -1,6 +1,7 @@
 package hplan.controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import hplan.dao.CartDAO;
 import hplan.dto.CartDTO;
+import hplan.dto.ProductDTO;
 
 
 @WebServlet("/cart_servlet/*")
@@ -55,12 +57,10 @@ public class CartController extends HttpServlet {
 				dto.setP_size(p_size);
 				
 				
-				
 				dao.insertCart(dto);		
-				
-				String page = "/cart/cart_list.jsp";
+				String page="/cart_servlet/cartList.do";
 				response.sendRedirect(contextPath+page);
-				
+			
 			}else {
 				String page="/member/login.jsp";
 				response.sendRedirect(contextPath+page);
@@ -91,7 +91,8 @@ public class CartController extends HttpServlet {
 				rd.forward(request, response);
 				
 			}
-			
+				
+		
 		}else if(url.indexOf("update.do") != -1) {
 			HttpSession session = request.getSession();
 			String user_id =(String)session.getAttribute("user_id");
@@ -104,32 +105,55 @@ public class CartController extends HttpServlet {
 				System.out.println("카트 번호 : " + cart_id);
 				if(amount != 0) {
 					CartDTO dto = new CartDTO();
-
+					dto.setUser_id(user_id);
 					dto.setAmount(amount);
 					dto.setCart_id(cart_id);
 					dao.modifyCart(dto);
+					String page="/cart_servlet/cartList.do";
+					response.sendRedirect(contextPath+page);
 				}else {
 					dao.delete(cart_id);
+					String page="/cart_servlet/cartList.do";
+					response.sendRedirect(contextPath+page);
 				}
-				String page="/cart_servlet/cartList.do";
-				response.sendRedirect(page);
+			
 				
 				
 			}
-			
-		}else if(url.indexOf("updateForm.do") != -1) {
+		}else if(url.indexOf("delete.do") != -1) { // 선택 삭제
 			HttpSession session = request.getSession();
 			String user_id =(String)session.getAttribute("user_id");
 			
 			if(user_id != null) {
-				List<CartDTO> list = dao.listCart(user_id);
+				int cart_id = Integer.parseInt(request.getParameter("cart_id"));
+				System.out.println("카트 번호 : " + cart_id);
+				dao.delete(cart_id);
 				
-				request.setAttribute("list", list);
-				String page ="/cart/updateForm.jsp";
-				RequestDispatcher rd = request.getRequestDispatcher(page);
-				rd.forward(request, response);
+				String page="/cart_servlet/cartList.do";
+				response.sendRedirect(contextPath+page);
+			
+				
+			}else {
+				String page="/member/login.jsp";
+				response.sendRedirect(contextPath+page);
 			}
 			
+		}else if(url.indexOf("allCartDe.do") != -1) { // 전체 삭제
+			HttpSession session = request.getSession();
+			String user_id =(String)session.getAttribute("user_id");
+			
+			System.out.println("유저 아이디 : "+ user_id);
+			if(user_id != null) {
+				dao.deleteAll(user_id);
+				
+				String page="/cart_servlet/cartList.do";
+				response.sendRedirect(contextPath+page);
+			
+				
+			}else {
+				String page="/member/login.jsp";
+				response.sendRedirect(contextPath+page);
+			}
 		}
 		
 	}

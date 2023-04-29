@@ -18,7 +18,7 @@ where p.product_id=c.product_id and user_id=#{user_id}
 <!-- 장바구니 수정  -->
 <update id="modifyCart">
 update cart
-set amount = #{amount}
+set user_id=#{user_id}, amount = #{amount}
 where  cart_id =#{cart_id}
 </update>
 <!-- 장바구니 개별 상품 삭제 -->
@@ -26,9 +26,15 @@ where  cart_id =#{cart_id}
 delete from cart
 where cart_id = #{cart_id}
 </delete>
+<!-- 장바구니 전체 삭제  -->
+<delete id="deleteAll">
+delete from cart
+where user_id=#{user_id}
+</delete>
 <insert id="insertCart">
 insert into cart(cart_id,user_id,product_id,amount,color,p_size)
 values (cart_seq.nextval,#{user_id},#{product_id},#{amount},#{color},#{p_size})
 </insert>
+
 
 </mapper>

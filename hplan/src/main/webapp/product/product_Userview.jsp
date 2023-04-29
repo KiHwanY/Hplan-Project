@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>join</title>
+<title>Hplan</title>
 <%@ include file="../include/header.jsp" %>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
@@ -40,7 +40,7 @@ line-height: 18px;
 h1, h2{text-shadow:none; text-align:center;}
 h1{	color: #666; text-transform:uppercase;	font-size:36px;}
 h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
-span{ font-size: 18px; color: #999999;}
+table span{ font-size: 18px; color: #999999;}
 #container {margin-left: 200px; width: 1200px;}
 #pf_img {float: left;}
 
@@ -211,7 +211,7 @@ input {width: 233px; height: 17px; border: 1px solid gray; font-family: inherit;
 					
 					<!-- 여백 -->
 					<table style="margin-bottom: 3px"/>
-					
+				
 
 					<!-- total 금액 표출-->
 					<table>
@@ -290,11 +290,12 @@ var form1 = document.productCart;
 		}
 		document.productCart.action = "${path}/cart_servlet/productinit.do";
 		document.productCart.submit();
-	
+		alert("상품이 장바구니에 담겼습니다.");
 	});
 });
 
 
 </script>
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>join</title>
+<title>COMMUNITY</title>
 <%@ include file="../include/header.jsp" %>
  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
  <style type="text/css">
@@ -205,5 +205,6 @@ $(function() {
  
  
  </script>
+ <%@ include file="../include/footer.jsp" %>
 </body>
 </html>

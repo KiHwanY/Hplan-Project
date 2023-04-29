@@ -106,8 +106,6 @@ a:hover {
 	<a  href="${path}/product_servlet/product_list.do">상품목록</a>
 	<a  href="${path}/product_servlet/product_insert_form.do">상품등록</a>
 	<a  href="${path}/member_servlet/member_list.do">유저목록</a>
-	<a  href="bottom.html" target="blank">주문관리</a>
-	<a  href="#" target="blank">주문리스트</a>
 	</div>
 	</div>
 <hr>

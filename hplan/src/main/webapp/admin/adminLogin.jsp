@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Login</title>
+<title>Admin</title>
 <%@ include file="../include/header.jsp" %>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
@@ -112,20 +112,6 @@ input {height: 20px;}
  }
  %>
  	
- 	</script>
-	<div id ="footer">
-	<br><br><br><br><br><br><br><br>
-	<div class="footer" style="margin-left: 450px;">
-
-		<ul>
-		<span>COMPANY: H PLAN</span>
-		<span>OWNER: H PLAN</span>
-		<span>BUSINESS LICENSE: 111-11-1111</span>
-		<span>ONLINE BUSINESS: 2023-서울역삼-2099</span><br>
-		<span>ADDRESS: 서울특별시 강남구 테헤란로14길 6 남도빌딩 2층, 3층, 4층</span><br>
-		<span>E - MAIL: HPLAN@naver.com</span>
-		</ul>
-	</div>
-	</div>
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

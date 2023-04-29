@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>join</title>
+<title>Cart</title>
 <%@ include file="../include/header.jsp" %>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
@@ -81,7 +81,7 @@ table th{
 <hr>
 &nbsp;&nbsp;&nbsp;&nbsp;
 
-<form id="form1" name="form1" enctype="multipart/form-data" method="post" action="${path}/cart_servlet/updateForm.do">
+<form id="form1" name="form1" enctype="multipart/form-data" method="post">
 <table border="1" style="width: 100%;" >
   <tr>
     <th>카테고리</th>
@@ -91,14 +91,16 @@ table th{
     <th>판매가</th>
     <th>수량</th>
     <th>배송비</th>
-    <th>합계</th>
     <th>선택</th>
-    
-    
   </tr>
+  <c:choose>
+ <c:when test="${map.count == 0}">
+   장바구니가 비었습니다.
+ </c:when>
+ <c:otherwise>
   <c:forEach var="row" items="${map.list}">
   <c:choose>
-  
+
    <c:when test="${user_id != null}">
 	  <tr>
 	    <td>${row.cate_name } </td>
@@ -116,13 +118,12 @@ table th{
 	    </td>
 	    <td>${row.p_price}원</td>
 	    <td align="center">
-	     ${row.amount}
+	   	 <input id="amount" name="amount" value="${row.amount}"> 
 	    </td>
 	    <td >${map.fee}원</td>
-	    <td>${map.sumMoney}원</td>
 	    <td>
 	    <input type="hidden" id="cart_id"name="cart_id" value="${row.cart_id}">
-	    <input class="btn btn-light" type="submit" id="btnUpdate" value="상품변경" ><br>
+	    <input class="btn btn-light" type="button" id="btnUpdate" value="상품변경" ><br>
 	    <input class="btn btn-dark" type="button" id="cartDelete" value="삭제">
 	    </td>
 	    </tr>
@@ -130,9 +131,11 @@ table th{
 	    </c:choose> 
 	  </c:forEach>
 	
+</c:otherwise>
+</c:choose>
 </table>
 <div align="right">
-	<input class="btn btn-secondary" type="button" id="AllDelete" value="장바구니비우기">
+	<input class="btn btn-secondary" type="button" onclick="allDelete()" value="장바구니비우기">
 </div>
 &nbsp;&nbsp;&nbsp;
 <table  border="1" style="width: 100%;" >
@@ -153,31 +156,47 @@ table th{
 	<input class="btn btn-secondary" type="button" id="mainList" value="쇼핑계속하기">
 </div>
 </form>
+
 <script type="text/javascript">
 var form1 = document.form1;
-
+var cart_id=$("#cart_id").val();
+var amount=$("#amount").val();
 $(function() {
+	$("#btnUpdate").click(function() {
+		
+		document.form1.action="${path}/cart_servlet/update.do?cart_id="+cart_id+"&amount="+amount;
+		document.form1.submit();
+		
+	});
 	
 	
 	$("#cartDelete").click(function() {
 		if(confirm("선택 상품을 삭제하시겠습니까?")){	
-		document.form1.action="${path}/cart_servlet/delete.do";
+		document.form1.action="${path}/cart_servlet/delete.do?cart_id="+cart_id;
 		document.form1.submit();
 		}
 	});
 	
-	$("#AllDelete").click(function() {
-		if(confirm("전체 상품을 삭제하시겠습니까?")){
-		document.form1.action="${path}/cart_servlet/Alldelete.do";
-		document.form1.submit();
-		}
-	});
 	$("#mainList").click(function() {
 		location.href="../hplan/index.jsp";
 	});
 });
+
+function allDelete() {
+		
+		if(cart_id != null){
+			
+		if(confirm("전체 상품을 삭제하시겠습니까?")){
+			document.form1.action="${path}/cart_servlet/allCartDe.do";
+			document.form1.submit();
+		}
+	
+		}else{
+			alert("장바구니가 비었습니다.");
+		}
+}
 </script>
 
-
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>
