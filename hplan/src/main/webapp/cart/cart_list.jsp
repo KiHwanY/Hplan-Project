@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cart</title>
+<title>54</title>
 <%@ include file="../include/header.jsp" %>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
@@ -114,16 +114,16 @@ table th{
 	    </td>
 	    <td>
 	    ${row.color} <br>
-	    ${row.p_size }
+	    ${row.p_size}
 	    </td>
 	    <td>${row.p_price}원</td>
 	    <td align="center">
-	   	 <input id="amount" name="amount" value="${row.amount}"> 
+	   	 ${row.amount}
 	    </td>
 	    <td >${map.fee}원</td>
 	    <td>
+	   
 	    <input type="hidden" id="cart_id"name="cart_id" value="${row.cart_id}">
-	    <input class="btn btn-light" type="button" id="btnUpdate" value="상품변경" ><br>
 	    <input class="btn btn-dark" type="button" id="cartDelete" value="삭제">
 	    </td>
 	    </tr>
@@ -160,12 +160,16 @@ table th{
 <script type="text/javascript">
 var form1 = document.form1;
 var cart_id=$("#cart_id").val();
-var amount=$("#amount").val();
+var amount=$(this).siblings().eq(0).val();
+var product_id=$("#product_id").val();
+
 $(function() {
 	$("#btnUpdate").click(function() {
 		
 		document.form1.action="${path}/cart_servlet/update.do?cart_id="+cart_id+"&amount="+amount;
 		document.form1.submit();
+		consloe.log(amount);
+		consloe.log(cart_id);
 		
 	});
 	

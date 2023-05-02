@@ -52,6 +52,12 @@ input {width: 233px; height: 17px; border: 1px solid gray; font-family: inherit;
 .TOTAL {font-size: 25px; padding-left: 100px; color: #000000;}
 #review{width: 500px; height:100px; border: none; margin-top: 100px;}
 #reDirectMessage{color: red; font-size: 11px;}
+#content{
+	width : 1200px;
+	height: 200px;
+	resize: none;
+}
+
 </style>
 </head>
 <body>
@@ -166,7 +172,7 @@ input {width: 233px; height: 17px; border: 1px solid gray; font-family: inherit;
 									<select name="color_option">
 											<option value="default" selected>-[필수] 옵션을 선택해 주세요 -</option>
 											<option disabled="disabled" >-------------------</option>
-											<option value="one">One Color style</option>
+											<option value="One Color style">One Color style</option>
 									</select>
 									</span>
 								</span>
@@ -270,10 +276,33 @@ input {width: 233px; height: 17px; border: 1px solid gray; font-family: inherit;
 <div style="position: fixed; bottom: 40px; right: 5px">
 <a href="#p_img">TOP</a>
 </div>
+<table border="1" style="width: 100%;">
+ <tr class="mb-3" align="center">
+  <td><input class="form-control" id="writer" name ="writer" placeholder="작성자"></td>
+  <td >
+  <button type="button" id="btnSave" class="btn btn-dark" >작성하기</button>
+  </td>
+ </tr>
+ <tr>
+  <td class="mb-3"><textarea class="form-control" id="content" rows="5" name="content" placeholder="내용을 작성하세요..!"></textarea></td>
+ </tr>
+</table>
+
+<!-- 댓글 목록을 출력할 영역 -->
+<input type="hidden" id="comment_num" name="comment_num">
+<div id="commentList"></div>
+
+
 <script type="text/javascript">
 $(function() {
+	comment_list();
+	$("#btnSave").click(function() {
+		comment_add();
+	});
 	$("#btnCartinsert").click(function() {
 var form1 = document.productCart;
+		
+		
 		
 		
 		if(form1.color_option.value == "default"){
@@ -290,10 +319,34 @@ var form1 = document.productCart;
 		}
 		document.productCart.action = "${path}/cart_servlet/productinit.do";
 		document.productCart.submit();
-		alert("상품이 장바구니에 담겼습니다.");
+		
 	});
 });
 
+function comment_add() { /* 댓글 쓰기 구현 */
+	var param="product_id="+$("#product_id").val()+"&writer="+$("#writer").val()
+	+"&content="+$("#content").val();
+	$.ajax({
+		type: "post",
+		url: "${path}/review_servlet/comment_add.do",
+		data: param,
+		success: function() {
+			$("#writer").val("");
+			$("#content").val("");
+			comment_list();
+		}
+	});
+}
+function comment_list() { /* 댓글 목록 출력 */
+	$.ajax({
+		type: "post",
+		url: "${path}/review_servlet/commentList.do",
+		data: "product_id=${dto.product_id}",
+		success: function(result) {
+			$("#commentList").html(result);
+		}
+	});
+}
 
 </script>
 <%@ include file="../include/footer.jsp" %>

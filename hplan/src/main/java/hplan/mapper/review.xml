@@ -4,6 +4,16 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="review">
+<insert id="commentAdd">
+insert into review
+(comment_num,product_id,writer,content) values
+((select nvl(max(comment_num)+1,1) from review)
+, #{product_id}, #{writer}, #{content})
+</insert>
+<select id="commentList" resultType="hplan.dto.ReviewDTO">
+	select * from review
+	where product_id=#{product_id}
 
+</select>
 
 </mapper>

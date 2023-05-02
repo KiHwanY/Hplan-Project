@@ -5,7 +5,7 @@
 
 <mapper namespace="cart">
 <select id="listCart" resultType="hplan.dto.CartDTO">
-select cart_id, m.user_id, p.product_id,p.p_name,c.amount,p.p_price,p.pf_img,p.cate_name,
+select cart_id, m.user_id, p.product_id,p.p_name,c.amount,p.p_price,p.pf_img,p.cate_name,c.color,c.p_size,
 (p.p_price*c.amount) money
 from member m, cart c, product p
 where m.user_id=c.user_id and p.product_id=c.product_id and m.user_id=#{user_id}
@@ -18,8 +18,8 @@ where p.product_id=c.product_id and user_id=#{user_id}
 <!-- 장바구니 수정  -->
 <update id="modifyCart">
 update cart
-set user_id=#{user_id}, amount = #{amount}
-where  cart_id =#{cart_id}
+set amount = #{amount}
+where  cart_id =#{cart_id} and user_id= #{user_id}
 </update>
 <!-- 장바구니 개별 상품 삭제 -->
 <delete id="delete">

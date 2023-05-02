@@ -78,7 +78,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	  
 	    </td>
 	    <td>${dto.p_price}</td>
-	    <td align="center">${dto.p_stock }</td>
+	    <td>${dto.p_stock }</td>
 	    <td >${dto.p_enroll}</td>
 	    </tr>
 	  	</c:when>

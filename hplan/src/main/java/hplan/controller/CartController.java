@@ -99,16 +99,18 @@ public class CartController extends HttpServlet {
 			
 			if(user_id != null) {
 				
-				int amount = Integer.parseInt(request.getParameter("amount"));
+				int amount = Integer.parseInt(request.getParameter("amount")); 
 				int cart_id =Integer.parseInt(request.getParameter("cart_id")); 
-				System.out.println("수량 : " + amount);
+				System.out.println("수량 : " + amount); 
+			
 				System.out.println("카트 번호 : " + cart_id);
+				CartDTO dto = new CartDTO();
+				dto.setUser_id(user_id);
+			
+				dto.setAmount(amount);
+				dto.setCart_id(cart_id);
+				dao.modifyCart(dto);
 				if(amount != 0) {
-					CartDTO dto = new CartDTO();
-					dto.setUser_id(user_id);
-					dto.setAmount(amount);
-					dto.setCart_id(cart_id);
-					dao.modifyCart(dto);
 					String page="/cart_servlet/cartList.do";
 					response.sendRedirect(contextPath+page);
 				}else {
