@@ -87,7 +87,7 @@ h3 {
 
 	<p id="community_font1">COMMUNITY</p>
 	<a id="community_font2" href="${path}/notice_servlet/noticeList.do">NOTICE</a> |
-	<a id="community_font2" href="${path}/review_servlet/reviewList.do">REVIEW Q/A</a> 
+	<a id="community_font2" href="#">REVIEW Q/A</a> 
 </div>
 <hr>
 &nbsp;&nbsp;&nbsp;

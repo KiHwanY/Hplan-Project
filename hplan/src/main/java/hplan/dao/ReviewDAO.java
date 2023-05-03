@@ -39,4 +39,18 @@ public class ReviewDAO {
 		
 		return list;
 	}
+
+	public void delete(int comment_num) {
+		SqlSession session=null;
+		try {
+			session=MybatisManager.getInstance().openSession();
+			session.delete("review.delete", comment_num);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session != null) session.close();
+		}
+		
+	}
 }

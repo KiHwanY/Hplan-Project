@@ -13,13 +13,14 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 </head>
 <body>
-<table border="1" style="width: 100%" id="review">
+
+<table border="1" style="width: 100%" >
 	<tr>
-		<th colspan="4" style="border-bottom: 1px solid gray;">
+		<th colspan="4" style="border-bottom: solid gray;">
 			<p style="font-size: 15px; text-align: left;">REVIEW</p>
 		</th>
 	</tr>
-					
+
 <c:forEach var="row" items="${list}">
  <tr>
   <td  style="padding-top: 5px; font-size: 12px;">

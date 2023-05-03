@@ -49,7 +49,7 @@ h1, h2{text-shadow:none; text-align:center;}
 h1{	color: #666; text-transform:uppercase;	font-size:36px;}
 h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
 #loginTitle{
-margin-left: 550px; margin-bottom: 35px; font-size: 50px; font-weight: normal; font-style: normal; font-family:'Inter';
+margin-left: 500px; margin-bottom: 35px; font-size: 50px; font-weight: normal; font-style: normal; font-family:'Inter';
  }
 #login_font1{
 font-family: 'Inter';
@@ -69,7 +69,7 @@ font-size: 10px;
 line-height: 24px;
 color: #8C8C8C;
 }
-#login {margin-left: 350px;}
+#login {margin-left: 300px;}
 li {list-style-type: none; margin-bottom: 10px; margin-left: 300px;}
 label {color:gray;}
 input {height: 20px;}

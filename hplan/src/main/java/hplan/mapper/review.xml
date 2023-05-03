@@ -15,5 +15,10 @@ insert into review
 	where product_id=#{product_id}
 
 </select>
+<delete id="delete">
+	delete from review
+	where comment_num = #{comment_num}
+
+</delete>
 
 </mapper>

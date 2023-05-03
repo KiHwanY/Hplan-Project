@@ -204,8 +204,6 @@ a:hover {
 #productTitle{margin-left: 50px; margin-bottom: 50px; font-size: 10px; font-weight: normal;}
 #paging{text-align: center;}
 .product {float: left; width: 480px;  text-align: left; border: 1px solid white; }
-#p_img {}
-
 #p_name {
 	font-size: 12px;
 	color: #999999;
@@ -241,35 +239,35 @@ a:hover {
                 <div>
                     <h3>OUTER</h3>
                 </div>                
-			<a href="#"><img src="../img/img3.jpg"></a>
+			<a href="${path}/main_servlet/outer.do"><img src="../img/img3.jpg"></a>
              </li>
              
              <li>
                 <div>
                     <h3>TOP</h3>
                 </div>
-			<a href="#"><img src="../img/img5.jpg"></a>
+			<a href="${path}/main_servlet/top.do"><img src="../img/img5.jpg"></a>
              </li>
              
              <li>
                 <div>
                     <h3>KNIT</h3>
                 </div>
-			<a href="#"><img src="../img/img.jpg"></a>
+			<a href="${path}/main_servlet/knit.do"><img src="../img/img.jpg"></a>
              </li>
              
              <li>
                 <div>
                     <h3>BOTTOM</h3>
                 </div>
-			<a href="#"><img src="../img/img6.jpg"></a>
+			<a href="${path}/main_servlet/bottom.do"><img src="../img/img6.jpg"></a>
              </li>
              
              <li>
                 <div>
                     <h3>SHOES</h3>
                 </div>
-			<a href="#"><img src="../img/img7.jpg"></a>
+			<a href="${path}/main_servlet/shoes.do"><img src="../img/img7.jpg"></a>
              </li>
              
              

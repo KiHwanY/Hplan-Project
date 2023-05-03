@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import hplan.dao.ReviewDAO;
 import hplan.dto.ReviewDTO;
@@ -34,7 +34,7 @@ public class ReviewController extends HttpServlet {
 			dto.setWriter(writer);
 			dto.setContent(content);
 			dao.commentAdd(dto);
-					
+			
 			
 		}else if(url.indexOf("commentList.do") != -1) {
 			int product_id=Integer.parseInt(request.getParameter("product_id"));
@@ -47,6 +47,15 @@ public class ReviewController extends HttpServlet {
 			String page="/community/review_list.jsp";
 			RequestDispatcher rd=request.getRequestDispatcher(page);
 			rd.forward(request, response);
+			
+		}else if(url.indexOf("delete.do") != -1) {
+			int comment_num = Integer.parseInt(request.getParameter("comment_num"));
+			
+			System.out.println("댓글 번호 : " + comment_num);
+			dao.delete(comment_num);
+			
+			String page="/review_servlet/commentList.do";
+			response.sendRedirect(contextPath+page);
 			
 		}
 		

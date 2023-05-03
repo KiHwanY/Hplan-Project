@@ -236,6 +236,12 @@ input {width: 233px; height: 17px; border: 1px solid gray; font-family: inherit;
 									<img src="../joinimg/listbtn.png" alt="뒤로가기" width="100" height="40" />
 								</a>
 							</td>
+							<td  class="buyNow" id="tableDistance"  >
+								<br></br><br><br>
+								
+									<button class="btn btn-outline-secondary"><a href="#btnSave">REVIEW</a></button>
+								
+							</td>
 						</tr>
 					</table>
 				
@@ -278,7 +284,7 @@ input {width: 233px; height: 17px; border: 1px solid gray; font-family: inherit;
 </div>
 <table border="1" style="width: 100%;">
  <tr class="mb-3" align="center">
-  <td><input class="form-control" id="writer" name ="writer" placeholder="작성자"></td>
+  <td><input class="form-control" id="writer" name ="writer" placeholder="ID"></td>
   <td >
   <button type="button" id="btnSave" class="btn btn-dark" >작성하기</button>
   </td>
@@ -287,7 +293,9 @@ input {width: 233px; height: 17px; border: 1px solid gray; font-family: inherit;
   <td class="mb-3"><textarea class="form-control" id="content" rows="5" name="content" placeholder="내용을 작성하세요..!"></textarea></td>
  </tr>
 </table>
-
+<div style="position: fixed; bottom: 40px; right: 5px">
+<a href="#productCart">TOP</a>
+</div>
 <!-- 댓글 목록을 출력할 영역 -->
 <input type="hidden" id="comment_num" name="comment_num">
 <div id="commentList"></div>
@@ -297,14 +305,24 @@ input {width: 233px; height: 17px; border: 1px solid gray; font-family: inherit;
 $(function() {
 	comment_list();
 	$("#btnSave").click(function() {
+		var writer = $("#writer").val();
+		var content =$("#content").val();
+		if(writer == ""){
+			alert("ID를 입력하세요.");
+			return false;
+		}
+		if(content == ""){
+			alert("내용을 입력하세요.");
+			return false;
+		}
+		
 		comment_add();
 	});
+	
+	
 	$("#btnCartinsert").click(function() {
 var form1 = document.productCart;
-		
-		
-		
-		
+
 		if(form1.color_option.value == "default"){
 			alert("색상을 선택하세요.");
 			return false;
@@ -324,6 +342,8 @@ var form1 = document.productCart;
 });
 
 function comment_add() { /* 댓글 쓰기 구현 */
+	
+	
 	var param="product_id="+$("#product_id").val()+"&writer="+$("#writer").val()
 	+"&content="+$("#content").val();
 	$.ajax({
@@ -349,6 +369,9 @@ function comment_list() { /* 댓글 목록 출력 */
 }
 
 </script>
+<br><br><br><br><br><br><br><br><br><br>
+<div>
 <%@ include file="../include/footer.jsp" %>
+</div>
 </body>
 </html>
