@@ -265,9 +265,9 @@ a:hover {
              
              <li>
                 <div>
-                    <h3>SHOES</h3>
+                    <h3>SHIRT</h3>
                 </div>
-			<a href="${path}/main_servlet/shoes.do"><img src="../img/img7.jpg"></a>
+			<a href="${path}/main_servlet/shirt.do"><img src="../img/img2.jpg"></a>
              </li>
              
              

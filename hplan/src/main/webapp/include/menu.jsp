@@ -78,11 +78,11 @@ a:hover {
 <div>
 	<div style="text-align:center; margin: 0px; padding: 10px 0px 0px 0px; word-spacing: 50px;">
 	
-	<a  href="${path}/main_servlet/outer.do" target="blank">OUTER</a>
-	<a  href="${path}/main_servlet/top.do" target="blank">TOP</a>
-	<a  href="${path}/main_servlet/knit.do" target="blank">KNIT</a>
-	<a  href="${path}/main_servlet/bottom.do" target="blank">BOTTOM</a>
-	<a  href="${path}/main_servlet/shoes.do" target="blank">SHOES</a>
+	<a  href="${path}/main_servlet/outer.do" >OUTER</a>
+	<a  href="${path}/main_servlet/top.do" >TOP</a>
+	<a  href="${path}/main_servlet/knit.do">KNIT</a>
+	<a  href="${path}/main_servlet/bottom.do" >BOTTOM</a>
+	<a  href="${path}/main_servlet/shirt.do" >SHIRT</a>
 	</div>
 	</div>
 <hr>

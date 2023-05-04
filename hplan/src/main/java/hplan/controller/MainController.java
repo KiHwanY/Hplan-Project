@@ -50,10 +50,10 @@ public class MainController extends HttpServlet {
 			String page ="/hplan/bottom.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
-		}else if(url.indexOf("shoes.do") != -1) {
+		}else if(url.indexOf("shirt.do") != -1) {
 			List<ProductDTO> list = dao.list();
 			request.setAttribute("list", list);
-			String page ="/hplan/shoes.jsp";
+			String page ="/hplan/shirt.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		}

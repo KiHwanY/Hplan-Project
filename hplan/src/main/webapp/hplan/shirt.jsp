@@ -49,7 +49,7 @@ color: #8C8C8C;
 <body>
 <%@ include file="../include/menu.jsp" %>
 <div align="center">
-<div id="productTitle">SHOES</div> 
+<div id="productTitle">SHIRT</div> 
 <p id="font2">아래 상품을 확인하여 주세요.</p>
 </div>
 <hr>
@@ -58,7 +58,7 @@ color: #8C8C8C;
 	
 		 <c:forEach var="dto" items="${list}">
 		   <c:choose>
-   			<c:when test="${dto.cate_name == 'shoes'}">
+   			<c:when test="${dto.cate_name == 'shirt'}">
 		<div class="product">
   		
 		

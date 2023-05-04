@@ -49,7 +49,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 						<option value="top">TOP</option>
 						<option value="knit">KNIT</option>
 						<option value="bottom">BOTTOM</option>
-						<option value="shoes">SHOES</option>
+						<option value="shirt">SHIRT</option>
 					</select>
 				</div>
 			</div>
@@ -98,7 +98,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 						<option value="size" selected>선택</option>
 						<option value="M">M(90~95)</option>
 						<option value="L">L(100~105)</option>
-						<option value="XL">XL(105~FRLL)</option>
+						<option value="XL">XL(105~FREE)</option>
 					</select>
 				</div>
 			</div>
