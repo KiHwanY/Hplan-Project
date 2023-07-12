@@ -71,7 +71,7 @@ Period :   April 2023, 4 weeks
 - 	관리자 회원 목록 조회 및 상품목록, 상품등록 기능 구현
 
 
-##  :airplane:   _Project List PDF_
+##  :pushpin:   _Project List PDF_
 https://github.com/TrakkerTeam/trakker/assets/117561565/8858e61a-ca0c-45e0-8774-83c407e64c7c
 
 </br>
