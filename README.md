@@ -44,11 +44,13 @@ Period :   April 2023, 4 weeks
 ##  :pushpin: _Environment_
 
 
--운영체제: Windows OS </br>
--개발도구: Eclipse </br>
--Server/DBMS: Apache Tomcat9, Oracle6 </br>
--Framework: mybatis </br>
--Language: JSP/Servlet, JSTL, EL, JavaScript, jQuery, HTML5, CSS </br>
+-OS : Window 10 </br>
+-Front-end : HTML5, CSS3, JS(ES6), BootStrap3 </br> 
+-Back-end : Java11, JSP, Servlet, Jquery, JSON, Ajax, Mybatis 3.4.5 </br>
+-DB : Oracle 11g XE </br>
+-WAS : Apache Tomcat 9.0 </br>
+-IDE : Eclipse </br>
+-Version Management : Git, Github </br>
 
 
 ##  :pushpin: _ER Diagran_
