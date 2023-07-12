@@ -28,13 +28,15 @@ Period :   April 2023, 4 weeks
 ### ⚙️ _Blueprint_ 
 
 프로젝트 기획 발표  </br>
-[https://drg2524.tistory.com/132](https://drg2524.tistory.com/92)
+
+</a> <a href = "https://drg2524.tistory.com/92"> <img alt="Tistory" src ="https://img.shields.io/badge/Tistory-white.svg?&style=for-the-badge"/></a>
 
 ***
 ### ⚙️ _Result_ 
 프로젝트 후기  </br>
 
-https://drg2524.tistory.com/93
+</a> <a href = "https://drg2524.tistory.com/93"> <img alt="Tistory" src ="https://img.shields.io/badge/Tistory-white.svg?&style=for-the-badge"/></a>
+
 
 
 ***
