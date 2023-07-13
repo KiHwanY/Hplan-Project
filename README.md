@@ -46,7 +46,7 @@ Period :   April 2023, 4 weeks
 
 -OS : Window 10 </br>
 -Front-end : HTML5, CSS3, JS(ES6), BootStrap3 </br> 
--Back-end : Java11, JSP, Servlet, Jquery, JSON, Ajax, Mybatis 3.4.5 </br>
+-Back-end : Java17, JSP, Servlet, Jquery, JSON, Ajax, Mybatis 3.4.5 </br>
 -DB : Oracle 11g XE </br>
 -WAS : Apache Tomcat 9.0 </br>
 -IDE : Eclipse </br>
